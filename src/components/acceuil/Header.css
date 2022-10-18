@@ -1,0 +1,177 @@
+@import url("https://fonts.googleapis.com/css2? family= Inter:wght@500;600;700;800;900 & family= Laila:wght@300;400;500;600; 700 & display=swap");
+
+.haeder{
+display: flex;
+justify-content: space-between;
+width: 100%;
+height: 10vh; 
+background-color: #FFFF;
+position: fixed;
+z-index: 100;
+}
+.logo-haeder{
+display: flex;
+align-items: center;
+margin-left: 60px;
+
+}
+.fa-youtube {
+font-size: 20px;
+color: #1B1622;
+}
+.profil-icon{
+ display: flex;
+ align-items: center;
+ margin-right: 80px; 
+ margin-top: 5px;
+ gap: 5px;
+}
+.haeder-title{
+font-size: 30px;
+font-family: 'Laila';
+font-weight:500;
+color: #4DBDFA;
+
+}
+.input-recherche{
+ display: flex;
+ justify-content: center; 
+ align-items: center;
+ padding: 0%;
+}
+.recherche{
+ width: 20vw;
+  height: 7vh;
+  padding-left: 5%;
+  margin: 8px;
+  border-radius: 8px;
+  background-color: #F6F3F3;
+  border: none;
+  align-items: center;
+  
+}
+.icon-search{
+width: 3vw;
+height: 7vh;
+margin-left: -10px;
+padding-left: 10px;
+padding-top: 10px;
+background-color: #4DBDFA;
+border: 1px solid #4DBDFA;
+}
+
+.icon-user{
+width: 5vw;
+height: 8vh;
+border-radius: 20px;
+padding-left: 10px;
+padding-top: 10px;
+
+}
+.icon-user img{
+width: 100%;
+height: 100%;
+object-fit: cover;
+border-radius: 20px;
+}
+
+.monCompte{
+font-size: 16px;
+font-family: 'Laila';
+font-weight:300;
+color: #4DBDFA;
+}
+.acceuil{
+width: 16vw;
+height: 600px;
+background-color: #F6F3F3;
+border: 1px solid #F6F3F3;
+border-radius: 20px;
+position: fixed;
+margin-top: 60px;
+}
+
+.acceuil-title{
+display: flex;
+margin-top: 50px;
+margin-bottom: 30px;
+margin-left: 30px;
+gap: 20px;
+
+}
+
+.abonnement{
+display: flex;
+margin-left: 30px;
+gap: 20px;
+}
+.acceuil p,.abonnement p{
+font-size: 20px;
+font-family: 'Laila';
+font-weight:300;
+color: #1B1622;
+
+}
+.fa-video{
+color: #4DBDFA;
+}
+.fa-house {
+color: #4DBDFA;
+}
+.fa-user{
+color: #FFF;
+font-size: 20px;
+}
+.acceuil-containt{
+  display: flex;
+  
+
+}
+.videoAcceuil{
+  display: flex;
+  width: 75%;
+  flex-wrap: wrap;
+  padding-top: 100px;
+  padding-left: 100px;
+  justify-content: space-between;
+  margin: auto;
+}
+.img-video{
+  display: flex;
+  flex-wrap: wrap;
+  width: 22%;
+  height: 300px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+  border-radius: 20px;
+}
+.img-video img{
+   width: 100%;
+   height: 200px;
+   object-fit: cover;
+   border-radius: 20px 20px 0 0;
+}
+.img-video p{
+ color: #1B1622;
+ font-size:16px;
+ font-weight: 600;
+ font-family: 'laila';
+ padding: 0 10px;
+ overflow: hidden;
+ display: -webkit-box;
+ -webkit-line-clamp: 2;
+ -webkit-box-orient: vertical;
+}
+a{
+ text-decoration: none;
+}
+.img-video .localized{
+ color: #4DBDFA;
+ font-size: 16px;
+ font-weight: 400;
+}
+.dashbord{
+  width: 100%;
+  height: 100vh;
+  overflow-x: hidden;
+}

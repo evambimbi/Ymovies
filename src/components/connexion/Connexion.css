@@ -1,0 +1,144 @@
+@import url("https://fonts.googleapis.com/css2? family= Inter:wght@500;600;700;800;900 & family= Laila:wght@300;400;500;600; 700 & display=swap");
+
+.connexion {
+  background-color: #f6f3f3;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.connexion-logo {
+  display: flex;
+  align-items: center;
+}
+.fa-youtube {
+font-size: 60px;
+color: #1B1622;
+}
+.connexion-title {
+font-size: 30px;
+font-family: 'Laila';
+font-weight:500;
+color: #4DBDFA;
+}
+#btnConnexion{
+width: 300px;
+height: 50px;
+border-radius: 5px;
+font-size: 16px;
+font-family: 'laila';
+font-weight:400;
+text-align: center;
+border-style: none;
+background-color: #4DBDFA;
+color: #FFFFFF;
+cursor: pointer;
+}
+.deconnect{
+  width: 150px;
+  height: 30px;
+  margin-top: 50px;
+  margin-left: 30px;
+  background-color: #4DBDFA;
+  color: #1B1622;
+  cursor: pointer;
+  border-style: none;
+  font-size: 16px;
+  font-family: 'laila';
+  font-weight: 600;
+}
+.abonnement-chaine{
+  display: flex;
+  width: 75%;
+  flex-wrap: wrap;
+  padding-top: 100px;
+  padding-left: 100px;
+  justify-content: space-between;
+  margin: auto;
+
+}
+.image-chaine{
+  display: flex;
+  flex-wrap: wrap;
+  width: 22%;
+  height: 300px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+  border-radius: 20px;
+
+}
+.image-chaine img{
+  width: 100%;
+   height: 200px;
+   object-fit: cover;
+   border-radius: 20px 20px 0 0;
+
+}
+.image-chaine p{
+  color: #1B1622;
+ font-size:16px;
+ font-weight: 600;
+ font-family: 'laila';
+ padding: 0 10px;
+ overflow: hidden;
+ display: -webkit-box;
+ -webkit-line-clamp: 2;
+ -webkit-box-orient: vertical;
+
+}
+.image-chaine .published{
+  color: #4DBDFA;
+ font-size: 16px;
+ font-weight: 400;
+}
+.videochannel{
+  display: flex;
+  width: 75%;
+  flex-wrap: wrap;
+  padding-top: 100px;
+  padding-left: 100px;
+  justify-content: space-between;
+  margin: auto;
+
+}
+.video-channel{
+  display: flex;
+  flex-wrap: wrap;
+  width: 22%;
+  height: 300px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+  border-radius: 20px;
+
+}
+.video-channel img{
+   width: 100%;
+   height: 200px;
+   object-fit: cover;
+   border-radius: 20px 20px 0 0;
+
+}
+.video-channel p{
+color: #1B1622;
+font-size:16px;
+ font-weight: 600;
+ font-family: 'laila';
+ padding: 0 10px;
+ overflow: hidden;
+ display: -webkit-box;
+ -webkit-line-clamp: 2;
+ -webkit-box-orient: vertical;
+
+}
+.player{
+  display: flex;
+  width: 75%;
+  flex-wrap: wrap;
+  padding-top: 100px;
+  padding-left: 200px;
+  justify-content: space-between;
+  margin: auto
+
+}
