@@ -7,18 +7,16 @@ import { gapi, loadAuth2 } from "gapi-script";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Dashbord } from "./components/Dashbord";
-import Abonnement from './components/Abonnement'
+import Abonnement from "./components/Abonnement";
 import Players from "./components/Players";
 import VideoChannel from "./components/VideoChannel";
 import Search from "./components/Search";
 
-
 function App() {
-  
   const [userToken, setUserToken] = useState("");
-    const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
-    let token = window.localStorage.getItem("token");
+  let token = window.localStorage.getItem("token");
 
   const ApiKey =
     "607682539682-tl7b5cm2cfftr62at32bvj04rr3sdpml.apps.googleusercontent.com";
@@ -58,14 +56,14 @@ function App() {
     const profileImg = user.getBasicProfile().getImageUrl();
     localStorage.setItem("image", profileImg);
   };
-   const signOut=()=>{
-     const auth2 = gapi.auth2.getAuthInstance();
-     auth2.signOut().then(()=>{
-         setUser(null);
-          console.log("User signed out.");
-          navigate("/")
-     })
-   }
+  const signOut = () => {
+    const auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(() => {
+      setUser(null);
+      console.log("User signed out.");
+      navigate("/");
+    });
+  };
   return (
     <>
       <Context.Provider
