@@ -48,16 +48,21 @@ color: #4DBDFA;
   background-color: #F6F3F3;
   border: none;
   align-items: center;
-  
+  outline-offset: -2px;
+  font-family: inherit;
+  line-height: 1.15;
+  outline: none;
 }
 .icon-search{
 width: 3vw;
 height: 7vh;
 margin-left: -10px;
 padding-left: 10px;
-padding-top: 10px;
+padding-top: 5px;
+padding-right: 10px;
 background-color: #4DBDFA;
 border: 1px solid #4DBDFA;
+cursor: pointer;
 }
 
 .icon-user{

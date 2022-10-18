@@ -24,7 +24,7 @@ const navigate=useNavigate();
       <div className="input-recherche">
         <input
           id="search-input"
-          type="search"
+          type="text"
           className="recherche"
           name="search-input"
           placeholder="Recherche"
