@@ -298,5 +298,8 @@ display: none;
 .Menu-mobil{
   display: flex;
 }
+.divState{
+display: none;
+}
 
 }

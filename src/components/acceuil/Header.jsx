@@ -14,13 +14,22 @@ import { useRef } from "react";
 
 const Haeder = () => {
   const [text, setText] = useState("");
-  const [menu, setMenu] = useState(false);
+  const [menu, setMenu] = useState(true);
   const navigate = useNavigate();
-  const menu_mobil = useRef();
-  console.log(menu_mobil.current);
+  let classname = "Menu-mobil";
+  if (menu) {
+    classname += " divState";
+  } else {
+    classname = classname;
+  }
   let { signOut } = useContext(Context);
   const handleSearch = () => {
     navigate(`/Resultat/${text}`);
+  };
+  const MobilMenu = () => {
+    console.log(menu);
+    setMenu(!menu);
+    console.log(menu);
   };
 
   const userImg = window.localStorage.getItem("image");
@@ -46,10 +55,7 @@ const Haeder = () => {
             <FontAwesomeIcon icon={faSearch} />
           </button>
         </div>
-        <button onClick={()=>console}>
-          <FontAwesomeIcon icon={faHamburger} />
-        </button>
-
+        <FontAwesomeIcon icon={faHamburger} onClick={MobilMenu} />
         <div className="profil-user">
           <div className="profil-icon">
             <div className="icon-user">
@@ -60,7 +66,7 @@ const Haeder = () => {
         </div>
       </div>
 
-      <div ref={menu_mobil} className="Menu-mobil">
+      <div className={classname}>
         <Link to={"/dashboard"}>
           <div className="Menu-title">
             <FontAwesomeIcon icon={faHome} />
