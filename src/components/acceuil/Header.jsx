@@ -79,6 +79,9 @@ const Haeder = () => {
             <p>Abonnement</p>
           </Link>
         </div>
+        <div className="icon-user">
+          <img src={userImg} alt="imageUser" />
+        </div>
         <button className="deconnect-mobil" onClick={signOut}>
           {" "}
           se déconnecter

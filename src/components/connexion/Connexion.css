@@ -139,6 +139,45 @@ font-size:16px;
   padding-top: 100px;
   padding-left: 200px;
   justify-content: space-between;
-  margin: auto
+  margin: auto;
+}
+@media (max-width: 640px){
+.fa-youtube {
+font-size: 40px;
+}
+.connexion-title {
+font-size: 20px;
+}
+#btnConnexion{
+width: 250px;
+height: 30px;
+}
+.abonnement-chaine{
+ width: 95%;
+  padding-left: 0;
+  margin: 0;
+  justify-content: center;
+}
+.image-chaine{
+  width: 80%;
+}
+.videochannel{
+  width: 95%;
+  padding-left: 0;
+  margin: 0;
+  justify-content: center;
+}
+.video-channel{
+  width: 80%;
+}
+.player{
+  width: 40%;
+  padding-top: 100px;
+  padding-left: 10px;
+  padding-right: 10px;
+  justify-content: center;
+  margin: 0;
+}
+
 
 }
