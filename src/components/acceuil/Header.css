@@ -11,7 +11,7 @@ align-items: center;
 .logo-haeder{
 display: flex;
 align-items: center;
-margin-left: 60px;
+margin-left: 50px;
 }
 .fa-youtube {
 font-size: 20px;
@@ -26,7 +26,7 @@ display: none;
 .profil-icon{
  display: flex;
  align-items: center;
- margin-right: 50px; 
+ margin-right: 80px; 
  margin-top: 5px;
  gap: 5px;
 }
