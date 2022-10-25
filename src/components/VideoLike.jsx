@@ -4,11 +4,13 @@ import { Context } from "../ContextAccount/Context";
 import Haeder from "./acceuil/Header";
 import Acceuil from "./acceuil/Acceuil";
 import "../App.css";
+import Chargement from "./Chargement";
 
 const VideoLike = () => {
   const { userToken } = useContext(Context);
   const [video, setVideo] = useState([]);
   const [isError, setIsError] = useState(false);
+  const [loading , setLoading]=useState(true);
 
   useEffect(() => {
     fetch(
@@ -20,6 +22,7 @@ const VideoLike = () => {
       })
       .then((data) => {
         setVideo(data.items);
+        setLoading(false)
       })
       .catch(() => setIsError(true));
   }, []);
@@ -32,7 +35,8 @@ const VideoLike = () => {
       <Acceuil />
 
       <div className="VideoLike">
-        {video?.map((video, index) => {
+        { !loading ?
+            video?.map((video, index) => {
           const videoId = video.id;
           return (
             <Link
@@ -43,7 +47,7 @@ const VideoLike = () => {
               <p>{video.snippet.title}</p>
             </Link>
           );
-        })}
+        }):<Chargement/>}
       </div>
     </>
   );

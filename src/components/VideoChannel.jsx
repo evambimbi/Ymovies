@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react'
 import { useParams,Link } from 'react-router-dom';
 import Haeder from "./acceuil/Header";
 import Acceuil from "./acceuil/Acceuil";
+import Chargement from "./Chargement";
 import "./connexion/Connexion.css";
 
 
@@ -9,6 +10,7 @@ const VideoChannel = () => {
         const { channelId } = useParams();
         const [Channel, setChannel] = useState([]);
         const [isError, setIsError] = useState(false);
+        const [loading, setLoading] = useState(true);
 
             useEffect(() => {
               fetch(
@@ -19,6 +21,7 @@ const VideoChannel = () => {
                 })
                 .then((data) => {
                   setChannel(data.items);
+                  setLoading(false);
                 })
                 .catch(() => setIsError(true));
             }, []);
@@ -31,7 +34,8 @@ const VideoChannel = () => {
        <Acceuil />
 
        <div className="videochannel">
-         {Channel.map((video, index) => {
+         {!loading ?
+         Channel.map((video, index) => {
            const videoId = video.id.videoId;
            return (
              <Link key={index} className="video-channel" to={`/players/${videoId}`}>
@@ -39,7 +43,7 @@ const VideoChannel = () => {
                <p>{video.snippet.title}</p>
              </Link>
            );
-         })}
+         }):<Chargement/>}
        </div>
      </>
    );

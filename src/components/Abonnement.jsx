@@ -1,9 +1,9 @@
 import React from "react";
-import { useEffect, useState, useContext } from "react";
-import { Context } from "../ContextAccount/Context";
+import { useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import Haeder from "./acceuil/Header";
 import Acceuil from "./acceuil/Acceuil";
+import Chargement from "./Chargement";
 import "./connexion/Connexion.css";
 
 
@@ -11,6 +11,7 @@ const Abonnement = () => {
   const [Abonnement, setAbonnement] = useState([]);
   // const { userToken } = useContext(Context);
     let token = window.localStorage.getItem("token");
+    const [loading, setLoading] = useState(true);
   
   useEffect(() => {
     fetch(
@@ -21,6 +22,7 @@ const Abonnement = () => {
       .then((data) => {
         setAbonnement(data);
         console.log(data);
+        setLoading(false);
       });
   }, [token]);
        
@@ -30,7 +32,8 @@ const Abonnement = () => {
       <Haeder />
       <Acceuil />
       <div className="abonnement-chaine">
-        {Abonnement.items?.map((item) => {
+        {!loading ?
+        Abonnement.items?.map((item) => {
           const videoItem = item.snippet.resourceId.channelId;
           return (
             <Link key={item.id} className="image-chaine" to={`/videochannel/${videoItem}`}>
@@ -42,7 +45,7 @@ const Abonnement = () => {
                 <p className="published">{item.snippet.publishedAt}</p>
             </Link>
           );
-        })}
+        }):<Chargement/>}
       </div>
     </>
   );

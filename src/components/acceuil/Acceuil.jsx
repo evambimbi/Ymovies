@@ -25,7 +25,7 @@ const Acceuil = () => {
       <div className="videoLike">
         <FontAwesomeIcon icon={faThumbsUp} />
         <Link to="/videolike">
-          <p>Vidéos "j'aime"</p>
+          <p>Vidèos "j'aime"</p>
         </Link>
       </div>
       <button className="deconnect" onClick={signOut}>

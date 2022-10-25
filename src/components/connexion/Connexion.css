@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2? family= Inter:wght@500;600;700;800;900 & family= Laila:wght@300;400;500;600; 700 & display=swap");
-
 .connexion {
   background-color: #f6f3f3;
   width: 100%;
@@ -14,41 +12,26 @@
   align-items: center;
 }
 .fa-youtube {
-font-size: 60px;
 color: #1B1622;
 }
 .connexion-title {
 font-size: 30px;
-font-family: 'Laila';
-font-weight:500;
+font-family: 'Laila Bold';
 color: #4DBDFA;
 }
 #btnConnexion{
 width: 300px;
 height: 50px;
-border-radius: 5px;
-font-size: 16px;
-font-family: 'laila';
-font-weight:400;
-text-align: center;
-border-style: none;
 background-color: #4DBDFA;
-color: #FFFFFF;
+color: #fff;
 cursor: pointer;
+border-style: none;
+font-size: 12px;
+font-family: 'Laila Bold';
+border-radius: 8px;
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
-.deconnect{
-  width: 150px;
-  height: 30px;
-  margin-top: 50px;
-  margin-left: 30px;
-  background-color: #4DBDFA;
-  color: #1B1622;
-  cursor: pointer;
-  border-style: none;
-  font-size: 16px;
-  font-family: 'laila';
-  font-weight: 600;
-}
+
 .abonnement-chaine{
   display: flex;
   width: 75%;
@@ -79,8 +62,7 @@ cursor: pointer;
 .image-chaine p{
   color: #1B1622;
  font-size:16px;
- font-weight: 600;
- font-family: 'laila';
+ font-family: 'Laila Bold';
  padding: 0 10px;
  overflow: hidden;
  display: -webkit-box;
@@ -123,8 +105,7 @@ cursor: pointer;
 .video-channel p{
 color: #1B1622;
 font-size:16px;
- font-weight: 600;
- font-family: 'laila';
+ font-family: 'Laila Bold';
  padding: 0 10px;
  overflow: hidden;
  display: -webkit-box;
@@ -163,8 +144,7 @@ font-size:16px;
 .SearchRelated p{
   color: #1B1622;
 font-size:16px;
- font-weight: 600;
- font-family: 'laila';
+font-family: 'Laila Bold';
  padding: 0 10px;
  overflow: hidden;
  display: -webkit-box;
@@ -201,9 +181,7 @@ height: 30px;
 .video-channel{
   width: 80%;
 }
-.player{
-  
-}
+
 
 
 }

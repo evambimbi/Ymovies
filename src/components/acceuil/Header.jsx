@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
-import { faBars,faSearch } from "@fortawesome/free-solid-svg-icons";
+import {faBars,faSearch,faThumbsUp} from "@fortawesome/free-solid-svg-icons";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { faVideo } from "@fortawesome/free-solid-svg-icons";
 import "./Header.css";
@@ -76,6 +76,12 @@ const Haeder = () => {
           <FontAwesomeIcon icon={faVideo} />
           <Link to="/abonnement">
             <p>Abonnement</p>
+          </Link>
+        </div>
+        <div className="videoLike-mobil">
+          <FontAwesomeIcon icon={faThumbsUp} />
+          <Link to="/videolike">
+            <p>Vidèos "j'aime"</p>
           </Link>
         </div>
         <div className="icon-user">

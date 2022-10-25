@@ -76,6 +76,11 @@
  -webkit-line-clamp: 2;
  -webkit-box-orient: vertical;
 }
+.chargement{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 @media (max-width: 640px){
 .Search{
   width: 95%;

@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family:'Laila Bold' ;
+  src: url('./fonts/Laila-Bold.ttf');
+}
+@font-face {
+  font-family: 'laila Medium';
+  src: url('./fonts/Laila-Medium.ttf');
+}
+@font-face {
+  font-family: 'laila regular';
+  src: url('./fonts/Laila-Regular.ttf');
+}
