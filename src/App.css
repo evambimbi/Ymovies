@@ -41,6 +41,41 @@
  -webkit-line-clamp: 2;
  -webkit-box-orient: vertical;
 }
+.VideoLike{
+  display: flex;
+  width: 75%;
+  flex-wrap: wrap;
+  padding-top: 100px;
+  padding-left: 100px;
+  justify-content: space-between;
+  margin: auto;
+}
+.VideoLike-content{
+  display: flex;
+  flex-wrap: wrap;
+  width: 22%;
+  height: 300px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+  border-radius: 20px;
+}
+.VideoLike-content img{
+  width: 100%;
+   height: 200px;
+   object-fit: cover;
+   border-radius: 20px 20px 0 0;
+}
+.VideoLike-content p{
+ color: #1B1622;
+ font-size:16px;
+ font-weight: 600;
+ font-family: 'laila';
+ padding: 0 10px;
+ overflow: hidden;
+ display: -webkit-box;
+ -webkit-line-clamp: 2;
+ -webkit-box-orient: vertical;
+}
 @media (max-width: 640px){
 .Search{
   width: 95%;
@@ -50,6 +85,11 @@
 }
 .Search-content{
   width: 80%;
+}
+.VideoLike{
+  width: 95%;
+  padding-left: 0;
+  justify-content: center;
 }
 }
 

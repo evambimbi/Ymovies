@@ -45,4 +45,4 @@ const VideoChannel = () => {
    );
 }
 
-export default VideoChannel
+export default VideoChannel;

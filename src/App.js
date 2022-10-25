@@ -11,6 +11,7 @@ import Abonnement from "./components/Abonnement";
 import Players from "./components/Players";
 import VideoChannel from "./components/VideoChannel";
 import Search from "./components/Search";
+import VideoLike from "./components/VideoLike";
 
 function App() {
   const [userToken, setUserToken] = useState("");
@@ -75,6 +76,7 @@ function App() {
           <Route path="/players/:videoId" element={<Players />} />
           <Route path="/videochannel/:channelId" element={<VideoChannel />} />
           <Route path="/Resultat/:SearchQuery" element={<Search />} />
+          <Route path="/videolike" element={<VideoLike />} />
         </Routes>
       </Context.Provider>
     </>

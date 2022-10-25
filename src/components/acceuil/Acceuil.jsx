@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { faVideo } from "@fortawesome/free-solid-svg-icons";
 import "./Header.css";
 import { Link } from "react-router-dom";
@@ -20,6 +20,12 @@ const Acceuil = () => {
         <FontAwesomeIcon icon={faVideo} />
         <Link to="/abonnement">
           <p>Abonnement</p>
+        </Link>
+      </div>
+      <div className="videoLike">
+        <FontAwesomeIcon icon={faThumbsUp} />
+        <Link to="/videolike">
+          <p>Vidéos "j'aime"</p>
         </Link>
       </div>
       <button className="deconnect" onClick={signOut}>
