@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { faHamburger } from "@fortawesome/free-solid-svg-icons";
+import { faBars,faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { faVideo } from "@fortawesome/free-solid-svg-icons";
 import "./Header.css";
@@ -55,7 +54,7 @@ const Haeder = () => {
             <FontAwesomeIcon icon={faSearch} />
           </button>
         </div>
-        <FontAwesomeIcon icon={faHamburger} onClick={MobilMenu} />
+        <FontAwesomeIcon icon={faBars} onClick={MobilMenu} />
         <div className="profil-user">
           <div className="profil-icon">
             <div className="icon-user">
@@ -83,7 +82,6 @@ const Haeder = () => {
           <img src={userImg} alt="imageUser" />
         </div>
         <button className="deconnect-mobil" onClick={signOut}>
-          {" "}
           se déconnecter
         </button>
       </div>
