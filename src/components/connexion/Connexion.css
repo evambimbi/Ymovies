@@ -134,12 +134,43 @@ font-size:16px;
 }
 .player{
   display: flex;
-  width: 75%;
-  flex-wrap: wrap;
-  padding-top: 100px;
-  padding-left: 200px;
+  flex-direction: row;
   justify-content: space-between;
+  width: 70%;
+  padding-top: 100px;
+  padding-left: 50px;
   margin: auto;
+}
+.videoPlayer{
+  display: flex;
+  position: fixed;
+  width: 40%;
+}
+.SearchRelated{
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  margin-left: 700px;
+  height: 300px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+.SearchRelate img{
+   width: 100%;
+   height: 200px;
+  object-fit: cover;
+}
+.SearchRelated p{
+  color: #1B1622;
+font-size:16px;
+ font-weight: 600;
+ font-family: 'laila';
+ padding: 0 10px;
+ overflow: hidden;
+ display: -webkit-box;
+ -webkit-line-clamp: 2;
+ -webkit-box-orient: vertical;
+
 }
 @media (max-width: 640px){
 .fa-youtube {
@@ -171,12 +202,7 @@ height: 30px;
   width: 80%;
 }
 .player{
-  width: 40%;
-  padding-top: 100px;
-  padding-left: 10px;
-  padding-right: 10px;
-  justify-content: center;
-  margin: 0;
+  
 }
 
 
