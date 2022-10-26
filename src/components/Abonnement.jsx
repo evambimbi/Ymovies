@@ -31,21 +31,28 @@ const Abonnement = () => {
     <>
       <Haeder />
       <Acceuil />
+      <p className="chaine-title">Mes chaînes Abonnèes</p>
       <div className="abonnement-chaine">
-        {!loading ?
-        Abonnement.items?.map((item) => {
-          const videoItem = item.snippet.resourceId.channelId;
-          return (
-            <Link key={item.id} className="image-chaine" to={`/videochannel/${videoItem}`}>
-              <img
-                src={item.snippet.thumbnails.default.url}
-                alt="youtube chaine"
-              />
+        {!loading ? (
+          Abonnement.items?.map((item) => {
+            const videoItem = item.snippet.resourceId.channelId;
+            return (
+              <Link
+                key={item.id}
+                className="image-chaine"
+                to={`/videochannel/${videoItem}`}>
+                <img
+                  src={item.snippet.thumbnails.default.url}
+                  alt="youtube chaine"
+                />
                 <p>{item.snippet.title}</p>
                 <p className="published">{item.snippet.publishedAt}</p>
-            </Link>
-          );
-        }):<Chargement/>}
+              </Link>
+            );
+          })
+        ) : (
+          <Chargement />
+        )}
       </div>
     </>
   );

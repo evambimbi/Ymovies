@@ -27,20 +27,24 @@ const VideoAcceuil = () => {
   }, [userToken]);
   return (
     <>
+      <p className="videoAcceuil-title">Les vidèos Populaires</p>
       <div className="videoAcceuil">
-        {!loading ?
-        video.items?.map((item) => {
-          return (
-            <Link
-              className="img-video"
-              key={item.id}
-              to={`/players/${item.id}`}>
-              <img src={item.snippet.thumbnails.medium.url} alt="" />
-              <p>{item.snippet.channelTitle}</p>
-              <p className="localized">{item.snippet.localized.title}</p>
-            </Link>
-          );
-        }):<Chargement/>}
+        {!loading ? (
+          video.items?.map((item) => {
+            return (
+              <Link
+                className="img-video"
+                key={item.id}
+                to={`/players/${item.id}`}>
+                <img src={item.snippet.thumbnails.medium.url} alt="" />
+                <p>{item.snippet.channelTitle}</p>
+                <p className="localized">{item.snippet.localized.title}</p>
+              </Link>
+            );
+          })
+        ) : (
+          <Chargement />
+        )}
       </div>
     </>
   );
