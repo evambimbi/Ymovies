@@ -27,7 +27,7 @@ const Search = () => {
       <Acceuil />
       <div className="Search">
         {!loading ?
-        video.map((video, index) => {
+        video?.map((video, index) => {
           const videoId = video.id.videoId;
           return (
             <Link

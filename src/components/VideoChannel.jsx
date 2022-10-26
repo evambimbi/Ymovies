@@ -35,7 +35,7 @@ const VideoChannel = () => {
 
        <div className="videochannel">
          {!loading ?
-         Channel.map((video, index) => {
+         Channel?.map((video, index) => {
            const videoId = video.id.videoId;
            return (
              <Link key={index} className="video-channel" to={`/players/${videoId}`}>

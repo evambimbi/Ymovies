@@ -32,7 +32,7 @@ const Players = () => {
         </div>
         <div className="SearchRelated">
           {!loading ?
-          video.map((video, index) => {
+          video?.map((video, index) => {
             const videoId = video.id.videoId;
             return (
               <Link
