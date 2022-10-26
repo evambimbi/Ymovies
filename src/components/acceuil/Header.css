@@ -69,7 +69,6 @@ background-color: #4DBDFA;
 border: 1px solid #4DBDFA;
 cursor: pointer;
 }
-
 .icon-user{
 width: 5vw;
 height: 8vh;
@@ -105,30 +104,6 @@ margin-top: 60px;
 .active .Nav-icon{
   color: #FFF;
 }
-a:active{
-color: #FFF;
-}
-
-.acceuil-title{
-display: flex;
-margin-top: 50px;
-margin-bottom: 30px;
-margin-left: 30px;
-gap: 20px;
-
-}
-
-.abonnement{
-display: flex;
-margin-left: 30px;
-margin-bottom: 30px;
-gap: 20px;
-}
-.acceuil p,.abonnement p{
-font-size: 20px;
-font-family: 'laila Medium';
-color: #1B1622;
-}
 .deconnect{
   width: 150px;
   height: 30px;
@@ -143,22 +118,13 @@ color: #1B1622;
   border-radius: 10px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
+.deconnect:hover{
+ background-color: #FFF;
+ color: #1B1622;
+}
 .Nav-icon{
 color: #4DBDFA;
 margin-right: 10px;
-}
-/* .fa-house {
-color: #4DBDFA;
-} */
-/* .fa-thumbs-up{
-color: #4DBDFA;
-} */
-/* .fa-user{
-color: #FFF;
-font-size: 20px;
-} */
-.acceuil-containt{
-  display: flex;
 }
 .videoAcceuil{
   display: flex;
@@ -208,6 +174,10 @@ color: #1B1622;
 .active{
   background-color: #4DBDFA;
   color: #FFF !important;
+}
+.acceuil a:hover{
+background-color:#FFF;
+color: #4DBDFA;
 } 
 a{
 text-decoration: none;
