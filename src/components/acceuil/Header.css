@@ -70,12 +70,9 @@ border: 1px solid #4DBDFA;
 cursor: pointer;
 }
 .icon-user{
-width: 5vw;
-height: 8vh;
-border-radius: 20px;
-padding-left: 10px;
-padding-top: 10px;
-
+width: 40px;
+height: 40px;
+border-radius: 8px;
 }
 .icon-user img{
 width: 100%;
@@ -341,10 +338,9 @@ display: none;
 .icon-user{
 width: 50px;
 height: 50px;
-border-radius: 20px;
+border-radius: 20px; 
 padding-left: 0;
-padding-top: 10px;
-
+padding-top: 10px; 
 }
 .fa-thumbs-up{
 color: #FFF;
