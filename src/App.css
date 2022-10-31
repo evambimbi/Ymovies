@@ -94,4 +94,12 @@
   justify-content: center;
 }
 }
+@media (max-width: 768px){
+.VideoLike{
+ padding-left: 130px;
+}
+.VideoLike-content{
+  width: 30%;
+}
+}
 

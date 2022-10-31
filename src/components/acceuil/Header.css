@@ -351,3 +351,39 @@ color: #FFF;
 }
 
 }
+@media (max-width: 768px){
+.logo-haeder{
+margin-left: 20px;
+}
+.profil-icon{
+ margin-right: 30px; 
+}
+.haeder-title{
+font-size: 25px;
+}
+.icon-search{
+width: 5vw;
+}
+.icon-user{
+width: 8vw;
+height: 8vh;
+padding-top: 0;
+}
+.acceuil{
+width: 25vw;
+}
+.deconnect{
+ margin-left: 16px;
+}
+.videoAcceuil{
+padding-left: 130px;
+}
+.videoAcceuil-title{
+font-size: 20px;
+padding-left: 300px;
+}
+.img-video{
+width: 30%;
+}
+
+}
