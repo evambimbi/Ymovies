@@ -1,8 +1,6 @@
 import React from "react";
 import { useEffect, useState} from "react";
 import { Link } from "react-router-dom";
-import Haeder from "./acceuil/Header";
-import Acceuil from "./acceuil/Acceuil";
 import Chargement from "./Chargement";
 import "./connexion/Connexion.css";
 
@@ -29,8 +27,6 @@ const Abonnement = () => {
 
   return (
     <>
-      <Haeder />
-      <Acceuil />
       <p className="chaine-title">Mes chaînes Abonnèes</p>
       <div className="abonnement-chaine">
         {!loading ? (

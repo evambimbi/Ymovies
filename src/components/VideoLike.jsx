@@ -1,8 +1,6 @@
 import React, { useState, useEffect,useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../ContextAccount/Context";
-import Haeder from "./acceuil/Header";
-import Acceuil from "./acceuil/Acceuil";
 import "../App.css";
 import Chargement from "./Chargement";
 
@@ -31,9 +29,6 @@ const VideoLike = () => {
   }
   return (
     <>
-      <Haeder />
-      <Acceuil />
-
       <div className="VideoLike">
         { !loading ?
             video?.map((video, index) => {

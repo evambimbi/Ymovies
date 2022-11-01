@@ -1,7 +1,5 @@
 import React,{useState,useEffect} from 'react'
 import { useParams,Link } from 'react-router-dom';
-import Haeder from "./acceuil/Header";
-import Acceuil from "./acceuil/Acceuil";
 import Chargement from "./Chargement";
 import "./connexion/Connexion.css";
 
@@ -30,20 +28,23 @@ const VideoChannel = () => {
             }
    return (
      <>
-       <Haeder />
-       <Acceuil />
-
        <div className="videochannel">
-         {!loading ?
-         Channel?.map((video, index) => {
-           const videoId = video.id.videoId;
-           return (
-             <Link key={index} className="video-channel" to={`/players/${videoId}`}>
-               <img src={video.snippet.thumbnails.medium.url} alt="" />
-               <p>{video.snippet.title}</p>
-             </Link>
-           );
-         }):<Chargement/>}
+         {!loading ? (
+           Channel?.map((video, index) => {
+             const videoId = video.id.videoId;
+             return (
+               <Link
+                 key={index}
+                 className="video-channel"
+                 to={`/players/${videoId}`}>
+                 <img src={video.snippet.thumbnails.medium.url} alt="" />
+                 <p>{video.snippet.title}</p>
+               </Link>
+             );
+           })
+         ) : (
+           <Chargement />
+         )}
        </div>
      </>
    );

@@ -78,6 +78,16 @@
   justify-content: center;
   align-items: center;
 }
+
+@media (max-width: 768px){
+.VideoLike{
+ padding-left: 130px;
+}
+.VideoLike-content{
+  width: 30%;
+}
+}
+
 @media (max-width: 640px){
 .Search{
   width: 95%;
@@ -92,14 +102,6 @@
   width: 95%;
   padding-left: 0;
   justify-content: center;
-}
-}
-@media (max-width: 768px){
-.VideoLike{
- padding-left: 130px;
-}
-.VideoLike-content{
-  width: 30%;
 }
 }
 

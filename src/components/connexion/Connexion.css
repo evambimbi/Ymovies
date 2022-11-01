@@ -157,6 +157,26 @@ font-family: 'Laila Bold';
  -webkit-box-orient: vertical;
 
 }
+
+@media (max-width: 768px){
+.abonnement-chaine{
+  padding-left: 130px;
+}
+.chaine-title{
+font-size: 20px;
+padding-left: 300px;
+}
+.image-chaine{
+width: 30%;
+}
+.SearchRelated{
+  display: none;
+}
+.player{
+ padding-left: 130px;
+}
+}
+
 @media (max-width: 640px){
 .fa-youtube {
 font-size: 40px;
@@ -185,23 +205,5 @@ height: 30px;
 }
 .video-channel{
   width: 80%;
-}
-}
-@media (max-width: 768px){
-.abonnement-chaine{
-  padding-left: 130px;
-}
-.chaine-title{
-font-size: 20px;
-padding-left: 300px;
-}
-.image-chaine{
-width: 30%;
-}
-.SearchRelated{
-  display: none;
-}
-.player{
- padding-left: 130px;
 }
 }

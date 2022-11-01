@@ -40,7 +40,7 @@ const Haeder = () => {
           <FontAwesomeIcon icon={faYoutube} />
           <h1 className="haeder-title">Ymovies</h1>
         </div>
-        <div className="input-recherche">
+        <form className="input-recherche">
           <input
             id="search-input"
             type="text"
@@ -50,10 +50,16 @@ const Haeder = () => {
             onChange={(e) => setText(e.target.value)}
             value={text}
           />
-          <button className="icon-search" onClick={handleSearch}>
-            <FontAwesomeIcon icon={faSearch} />
-          </button>
-        </div>
+          {text.trim() ? (
+            <button className="icon-search" onClick={handleSearch}>
+              <FontAwesomeIcon icon={faSearch} />
+            </button>
+          ) : (
+            <button className="icon-search" disabled>
+              <FontAwesomeIcon icon={faSearch} />
+            </button>
+          )}
+        </form>
         <FontAwesomeIcon icon={faBars} onClick={MobilMenu} />
         <div className="profil-user">
           <div className="profil-icon">

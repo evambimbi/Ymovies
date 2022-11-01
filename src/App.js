@@ -12,6 +12,8 @@ import Players from "./components/Players";
 import VideoChannel from "./components/VideoChannel";
 import Search from "./components/Search";
 import VideoLike from "./components/VideoLike";
+import Haeder from "./components/acceuil/Header";
+import Acceuil from "./components/acceuil/Acceuil";
 
 function App() {
   const [userToken, setUserToken] = useState("");
@@ -65,6 +67,15 @@ function App() {
       navigate("/");
     });
   };
+  const Layout = ({children}) =>{
+   return (
+     <>
+       <Haeder />
+       <Acceuil />
+       <div>{children}</div>
+     </>
+   );
+  }
   return (
     <>
       <Context.Provider
@@ -72,11 +83,49 @@ function App() {
         <Routes>
           <Route path="/" element={<Connexion />} />
           <Route path="/dashboard" element={<Dashbord />} />
-          <Route path="/abonnement" element={<Abonnement />} />
-          <Route path="/players/:videoId" element={<Players />} />
-          <Route path="/videochannel/:channelId" element={<VideoChannel />} />
-          <Route path="/Resultat/:SearchQuery" element={<Search />} />
-          <Route path="/videolike" element={<VideoLike />} />
+          <Route
+            path="/abonnement"
+            element={
+              <Layout>
+                <Abonnement />
+              </Layout>
+            }
+          />
+          <Route
+            path="/players/:videoId"
+            element={
+              <Layout>
+                <Players />
+              </Layout>
+            }
+          />
+
+          <Route
+            path="/videochannel/:channelId"
+            element={
+              <Layout>
+                <VideoChannel />
+              </Layout>
+            }
+          />
+
+          <Route
+            path="/Resultat/:SearchQuery"
+            element={
+              <Layout>
+                <Search />
+              </Layout>
+            }
+          />
+
+          <Route
+            path="/videolike"
+            element={
+              <Layout>
+                <VideoLike />
+              </Layout>
+            }
+          />
         </Routes>
       </Context.Provider>
     </>

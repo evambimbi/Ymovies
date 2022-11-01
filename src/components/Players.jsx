@@ -1,8 +1,6 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Haeder from "./acceuil/Header";
-import Acceuil from "./acceuil/Acceuil";
 import Chargement from "./Chargement";
 import "./connexion/Connexion.css";
 
@@ -23,8 +21,6 @@ const Players = () => {
 
   return (
     <>
-      <Haeder />
-      <Acceuil />
       <div className="player">
         <div className="videoPlayer">
            <iframe
