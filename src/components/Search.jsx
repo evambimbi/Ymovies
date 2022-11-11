@@ -15,26 +15,36 @@ const Search = () => {
     )
       .then((response) => response.json())
       .then((data) => {
-        setVideo(data.items)
+        setVideo(data.items);
         setLoading(false);
       });
   }, []);
+
   return (
     <>
+      <p className="resutat_recherche">
+        Résultats de la recherche : {SearchQuery}
+      </p>
       <div className="Search">
-        {!loading ?
-        video?.map((video, index) => {
-          const videoId = video.id.videoId;
-          return (
-            <Link
-              key={index}
-              className="Search-content"
-              to={`/players/${videoId}`}>
-              <img src={video.snippet.thumbnails.medium.url} alt="" />
-              <p>{video.snippet.title}</p>
-            </Link>
-          );
-        }):<Chargement/>}
+        {!loading ? (
+          video?.map((video, index) => {
+            const videoId = video.id.videoId;
+            return (
+              <Link
+                key={index}
+                className="Search-content"
+                to={`/players/${videoId}`}>
+                <img src={video.snippet.thumbnails.medium.url} alt="" />
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: video.snippet.title,
+                  }}></p>
+              </Link>
+            );
+          })
+        ) : (
+          <Chargement />
+        )}
       </div>
     </>
   );

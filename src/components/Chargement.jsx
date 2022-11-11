@@ -10,8 +10,8 @@ const Chargement = () => {
         <img
           src={loader}
           alt="chargement"
-          height={300}
-          width={500}
+          height={180}
+          width={180}
           style={{ alignSelf: "center" }}
         />
       </div>

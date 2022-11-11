@@ -1,6 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
-import {faBars,faSearch,faThumbsUp} from "@fortawesome/free-solid-svg-icons";
+import {
+  faBars,
+  faSearch,
+  faThumbsUp,
+} from "@fortawesome/free-solid-svg-icons";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { faVideo } from "@fortawesome/free-solid-svg-icons";
 import "./Header.css";
@@ -9,7 +13,6 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../../ContextAccount/Context";
 import { useContext } from "react";
-
 
 const Haeder = () => {
   const [text, setText] = useState("");
@@ -22,7 +25,14 @@ const Haeder = () => {
     classname = classname;
   }
   let { signOut } = useContext(Context);
-  const handleSearch = () => {
+  const handleSearch = (e) => {
+    e.preventDefault();
+    // // Copie du state
+    // const copyText = text;
+    // console.log(copyText);
+    // // Manipulation du copie du state
+    // // const searchName = setText;
+    setText(e.target.value);
     navigate(`/Resultat/${text}`);
   };
   const MobilMenu = () => {
@@ -40,10 +50,10 @@ const Haeder = () => {
           <FontAwesomeIcon icon={faYoutube} />
           <h1 className="haeder-title">Ymovies</h1>
         </div>
-        <form className="input-recherche">
+        <form onSubmit={handleSearch} className="input-recherche">
           <input
             id="search-input"
-            type="text"
+            type="search"
             className="recherche"
             name="search-input"
             placeholder="Recherche"
@@ -51,7 +61,7 @@ const Haeder = () => {
             value={text}
           />
           {text.trim() ? (
-            <button className="icon-search" onClick={handleSearch}>
+            <button className="icon-search" type="submit">
               <FontAwesomeIcon icon={faSearch} />
             </button>
           ) : (
@@ -87,7 +97,7 @@ const Haeder = () => {
         <div className="videoLike-mobil">
           <FontAwesomeIcon icon={faThumbsUp} />
           <Link to="/videolike">
-            <p>Vidèos "j'aime"</p>
+            <p>Vidéos "j'aime"</p>
           </Link>
         </div>
         <div className="icon-user">

@@ -92,15 +92,14 @@ flex-direction: column;
 width: 16vw;
 height: 600px;
 background-color: #F6F3F3;
-border: 1px solid #F6F3F3;
-border-radius: 20px;
+border: 1px solid #F6F3F3; 
 position: fixed;
 margin-top: 60px;
 }
 
 .active .Nav-icon{
   color: #FFF;
-}
+} 
 .deconnect{
   width: 150px;
   height: 30px;
@@ -179,6 +178,7 @@ color: #1B1622;
   background-color: #4DBDFA;
   color: #FFF !important;
 }
+
 .acceuil a:hover{
 background-color:#FFF;
 color: #4DBDFA;

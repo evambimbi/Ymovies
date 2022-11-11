@@ -20,6 +20,7 @@ const VideoChannel = () => {
                 .then((data) => {
                   setChannel(data.items);
                   setLoading(false);
+                
                 })
                 .catch(() => setIsError(true));
             }, []);

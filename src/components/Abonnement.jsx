@@ -1,19 +1,20 @@
 import React from "react";
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Chargement from "./Chargement";
 import "./connexion/Connexion.css";
 
-
 const Abonnement = () => {
   const [Abonnement, setAbonnement] = useState([]);
   // const { userToken } = useContext(Context);
-    let token = window.localStorage.getItem("token");
-    const [loading, setLoading] = useState(true);
-  
+  let token = window.localStorage.getItem("token");
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     fetch(
-      "https://youtube.googleapis.com/youtube/v3/subscriptions?part=snippet&maxResults=20&mine=true&key=AIzaSyBTmYh1v0nU5ZBzv9kE7CaWnZY9hfz8HV8&access_token="+token)
+      `https://youtube.googleapis.com/youtube/v3/subscriptions?part=snippet&maxResults=20&mine=true&key=AIzaSyBTmYh1v0nU5ZBzv9kE7CaWnZY9hfz8HV8&access_token=` +
+        token
+    )
       .then((response) => {
         return response.json();
       })
@@ -23,11 +24,10 @@ const Abonnement = () => {
         setLoading(false);
       });
   }, [token]);
-       
 
   return (
     <>
-      <p className="chaine-title">Mes chaînes Abonnèes</p>
+      <p className="chaine-title">Mes chaînes Abonnées</p>
       <div className="abonnement-chaine">
         {!loading ? (
           Abonnement.items?.map((item) => {

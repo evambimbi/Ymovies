@@ -37,6 +37,7 @@ function App() {
       }
     };
     setAuth2();
+    noAcces();
   }, []);
   const attachSignin = (element, auth2) => {
     auth2?.attachClickHandler(
@@ -59,30 +60,43 @@ function App() {
     const profileImg = user.getBasicProfile().getImageUrl();
     localStorage.setItem("image", profileImg);
   };
+  const noAcces = () => {
+    if (!token) {
+      navigate("/");
+    }
+  };
   const signOut = () => {
     const auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(() => {
       setUser(null);
       console.log("User signed out.");
       navigate("/");
+      localStorage.removeItem("token");
     });
   };
-  const Layout = ({children}) =>{
-   return (
-     <>
-       <Haeder />
-       <Acceuil />
-       <div>{children}</div>
-     </>
-   );
-  }
+  const Layout = ({ children }) => {
+    return (
+      <>
+        <Haeder />
+        <Acceuil />
+        <div>{children}</div>
+      </>
+    );
+  };
   return (
     <>
       <Context.Provider
         value={{ userToken, setUserToken, attachSignin, signOut }}>
         <Routes>
           <Route path="/" element={<Connexion />} />
-          <Route path="/dashboard" element={<Dashbord />} />
+          <Route
+            path="/dashboard"
+            element={
+              <Layout>
+                <Dashbord />
+              </Layout>
+            }
+          />
           <Route
             path="/abonnement"
             element={

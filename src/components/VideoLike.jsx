@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../ContextAccount/Context";
 import "../App.css";
@@ -8,11 +8,11 @@ const VideoLike = () => {
   const { userToken } = useContext(Context);
   const [video, setVideo] = useState([]);
   const [isError, setIsError] = useState(false);
-  const [loading , setLoading]=useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch(
-      `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&myRating=like&key=AIzaSyBTmYh1v0nU5ZBzv9kE7CaWnZY9hfz8HV8&access_token=` +
+      `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&myRating=like&key=${process.env.REACT_APP_API_KEY}&access_token=` +
         userToken
     )
       .then((response) => {
@@ -20,7 +20,7 @@ const VideoLike = () => {
       })
       .then((data) => {
         setVideo(data.items);
-        setLoading(false)
+        setLoading(false);
       })
       .catch(() => setIsError(true));
   }, []);
@@ -30,19 +30,22 @@ const VideoLike = () => {
   return (
     <>
       <div className="VideoLike">
-        { !loading ?
-            video?.map((video, index) => {
-          const videoId = video.id;
-          return (
-            <Link
-              key={index}
-              className="VideoLike-content"
-              to={`/players/${videoId}`}>
-              <img src={video.snippet.thumbnails.medium.url} alt="" />
-              <p>{video.snippet.title}</p>
-            </Link>
-          );
-        }):<Chargement/>}
+        {!loading ? (
+          video?.map((video, index) => {
+            const videoId = video.id;
+            return (
+              <Link
+                key={index}
+                className="VideoLike-content"
+                to={`/players/${videoId}`}>
+                <img src={video.snippet.thumbnails.medium.url} alt="" />
+                <p>{video.snippet.title}</p>
+              </Link>
+            );
+          })
+        ) : (
+          <Chargement />
+        )}
       </div>
     </>
   );
