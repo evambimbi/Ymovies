@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Chargement from "./Chargement";
+import ShowMoreText from "react-show-more-text";
 import "./connexion/Connexion.css";
 
 const Abonnement = () => {
@@ -24,10 +25,10 @@ const Abonnement = () => {
         setLoading(false);
       });
   }, [token]);
-
+  console.log("video : ", Abonnement);
   return (
     <>
-      <p className="chaine-title">Mes chaînes Abonnées</p>
+      <p className="chaine-title">Mes chaînes Abonnèes</p>
       <div className="abonnement-chaine">
         {!loading ? (
           Abonnement.items?.map((item) => {
@@ -42,7 +43,16 @@ const Abonnement = () => {
                   alt="youtube chaine"
                 />
                 <p>{item.snippet.title}</p>
-                <p className="published">{item.snippet.publishedAt}</p>
+                <ShowMoreText
+                  className="video__title"
+                  lines={1}
+                  more=""
+                  less="Show less"
+                  anchorClass="show-more-less-clickable"
+                  expanded={false}
+                  truncatedEndingComponent={"..."}>
+                  <p className="published">{item.snippet.description}</p>
+                </ShowMoreText>
               </Link>
             );
           })

@@ -97,14 +97,14 @@ const Haeder = () => {
         <div className="videoLike-mobil">
           <FontAwesomeIcon icon={faThumbsUp} />
           <Link to="/videolike">
-            <p>Vidéos "j'aime"</p>
+            <p>Vidèos "j'aime"</p>
           </Link>
         </div>
         <div className="icon-user">
           <img src={userImg} alt="imageUser" />
         </div>
         <button className="deconnect-mobil" onClick={signOut}>
-          se déconnecter
+          se dèconnecter
         </button>
       </div>
     </>

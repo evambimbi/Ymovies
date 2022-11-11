@@ -5,6 +5,9 @@ import { useState } from "react";
 import { Context } from "../../ContextAccount/Context";
 import { Link } from "react-router-dom";
 import Chargement from "../Chargement";
+import numeral from 'numeral';
+import moment from 'moment/moment';
+import ShowMoreText from "react-show-more-text";
 import "./Header.css";
 
 const VideoAcceuil = () => {
@@ -26,7 +29,7 @@ const VideoAcceuil = () => {
   }, [userToken]);
   return (
     <>
-      <p className="videoAcceuil-title">Les vidèos Populaires</p>
+      <p className="videoAcceuil-title">Les vidéos Populaires</p>
       <div className="videoAcceuil">
         {!loading ? (
           video.items?.map((item) => {
@@ -36,8 +39,34 @@ const VideoAcceuil = () => {
                 key={item.id}
                 to={`/players/${item.id}`}>
                 <img src={item.snippet.thumbnails.medium.url} alt="" />
-                <p>{item.snippet.channelTitle}</p>
-                <p className="localized">{item.snippet.localized.title}</p>
+                <div className="img-video-content">
+                  <p>{item.snippet.channelTitle}</p>
+                  <ShowMoreText
+                    className="video__title"
+                    lines={1}
+                    more=""
+                    less="Show less"
+                    anchorClass="show-more-less-clickable"
+                    expanded={false}
+                    truncatedEndingComponent={"..."}>
+                    <p className="localized">{item.snippet.localized.title}</p>
+                  </ShowMoreText>
+                </div>
+                <div className="videoAcceuil-info">
+                  <div className="comment__info1">
+                    {numeral(item.statistics?.viewCount).format("O.a")} vues
+                  </div>
+                  <div className="comment__info2">
+                    {numeral(item.statistics?.likeCount).format("O.a")} j'aimes
+                  </div>
+                  <div className="comment__info3">
+                    {numeral(item.statistics?.commentCount).format("O.a")}{" "}
+                    Commentaires
+                  </div>
+                  <div className="comment__info4">
+                    publié : {moment(item.snippet.publishedAt).fromNow()}
+                  </div>
+                </div>
               </Link>
             );
           })
