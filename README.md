@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+Project description
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Hello, I am Eveline MBIMBI. Backend Developer and Database Designer. My app is named Personal Youtube Player
 
-## Available Scripts
+Personal Youtube Player is a web application that helps people who have google account to view and read videos of their subscribed channels.
 
-In the project directory, you can run:
+I used React.Js, Vit and Youtube Data Api (https://developers.google.com/youtube/v3/getting-started) to make this web app
 
-### `npm start`
+React is a popular JavaScript library for building user interfaces.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Vite is a blazing fast frontend build tool that includes features like Hot Module Reloading (HMR), optimized builds, and TypeScript support out of the box.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Using the two in conjunction is one of the fastest ways to build a web app.
 
-### `npm test`
+Getting Started
+By default, Replit runs the dev script, but you can configure it by changing the run field in the configuration file. Here are the vite docs for serving production websites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To start this in local, you should write "npm run dev"
+I used nev file to hide my keys
+Typescript
+Just rename any file from .jsx to .tsx. You can also try our [TypeScript Template]
 
-### `npm run build`
+Then check my package.json file to see all the dependeces I installed to run my app
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Such as :
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+"gapi-script" : for authentification
+"moment" or "react-moment": for converting time data from the api
+"react-google-login" : for google authentification
+"react-numeral" : for converting numeral data such as the number of like for a video
+"react-router-dom" : for pages routes
+"react-router-hash-link": for hash link
+"eslint" or "eslint-plugin-react": for static test
+"prettier": for code format
+"@testinglibrary/react"
+"react-show-more-text" : for hidding long text through 2 lines
+For any contact : evelinembimbi@gmail.com
