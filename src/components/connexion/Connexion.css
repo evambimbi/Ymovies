@@ -68,7 +68,7 @@ filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
  -webkit-box-orient: vertical;
 
 }
-.image-chaine .published{
+.video__title{
   color: #4DBDFA;
  font-size: 16px;
  font-weight: 400;

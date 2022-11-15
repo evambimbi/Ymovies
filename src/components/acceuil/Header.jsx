@@ -8,7 +8,7 @@ import {
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { faVideo } from "@fortawesome/free-solid-svg-icons";
 import "./Header.css";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../../ContextAccount/Context";
@@ -27,14 +27,12 @@ const Haeder = () => {
   let { signOut } = useContext(Context);
   const handleSearch = (e) => {
     e.preventDefault();
-    // // Copie du state
-    // const copyText = text;
-    // console.log(copyText);
-    // // Manipulation du copie du state
-    // // const searchName = setText;
     setText(e.target.value);
     navigate(`/Resultat/${text}`);
   };
+  useEffect(()=>{
+    console.log(text)
+  })
   const MobilMenu = () => {
     console.log(menu);
     setMenu(!menu);
