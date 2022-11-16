@@ -14,7 +14,7 @@ const VideoLike = () => {
 
   useEffect(() => {
     fetch(
-      `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&myRating=like&key=${process.env.REACT_APP_API_KEY}&access_token=` +
+      `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&myRating=like&key=AIzaSyBTmYh1v0nU5ZBzv9kE7CaWnZY9hfz8HV8&access_token=` +
         userToken
     )
       .then((response) => {
@@ -26,7 +26,6 @@ const VideoLike = () => {
       })
       .catch(() => setIsError(true));
   }, []);
-  console.log("like :", video);
   if (isError) {
     return <div>not found</div>;
   }

@@ -1,18 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
-import {
-  faBars,
-  faSearch,
-  faThumbsUp,
-} from "@fortawesome/free-solid-svg-icons";
+import {faBars,faSearch,faThumbsUp} from "@fortawesome/free-solid-svg-icons";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { faVideo } from "@fortawesome/free-solid-svg-icons";
-import "./Header.css";
 import { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate,useParams } from "react-router-dom";
 import { Context } from "../../ContextAccount/Context";
 import { useContext } from "react";
+import "./Header.css";
 
 const Haeder = () => {
   const [text, setText] = useState("");
@@ -28,7 +24,7 @@ const Haeder = () => {
   let { signOut } = useContext(Context);
   const handleSearch = (e) => {
     e.preventDefault();
-    setText(e.target.value);
+    // setText(e.target.value);
     navigate(`/Resultat/${text}`);
   };
   useEffect(() => {

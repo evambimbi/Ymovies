@@ -5,12 +5,14 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import moment from "moment/moment";
 import ShowMoreText from "react-show-more-text";
-import "../App.css";
+import "../App.css"
 
 const Search = () => {
   const { SearchQuery } = useParams();
   const [video, setVideo] = useState([]);
   const [loading, setLoading] = useState(true);
+  
+  
   
   useEffect(() => {
     fetch(
