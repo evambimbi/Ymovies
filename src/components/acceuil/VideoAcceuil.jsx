@@ -37,6 +37,7 @@ const VideoAcceuil = () => {
               <Link
                 className="img-video"
                 key={item.id}
+                numeral
                 to={`/players/${item.id}`}>
                 <img src={item.snippet.thumbnails.medium.url} alt="" />
                 <div className="img-video-content">

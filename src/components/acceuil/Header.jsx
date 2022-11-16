@@ -10,13 +10,14 @@ import { faVideo } from "@fortawesome/free-solid-svg-icons";
 import "./Header.css";
 import { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useParams } from "react-router-dom";
 import { Context } from "../../ContextAccount/Context";
 import { useContext } from "react";
 
 const Haeder = () => {
   const [text, setText] = useState("");
   const [menu, setMenu] = useState(true);
+  const params = useParams();
   const navigate = useNavigate();
   let classname = "Menu-mobil";
   if (menu) {
@@ -30,9 +31,11 @@ const Haeder = () => {
     setText(e.target.value);
     navigate(`/Resultat/${text}`);
   };
-  useEffect(()=>{
-    console.log(text)
-  })
+  useEffect(() => {
+  if (params.hasOwnProperty("SearchQuery")){
+    setText(params.SearchQuery); 
+  } 
+  }, [params]);
   const MobilMenu = () => {
     console.log(menu);
     setMenu(!menu);

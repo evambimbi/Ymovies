@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../ContextAccount/Context";
+import moment from "moment/moment";
+import ShowMoreText from "react-show-more-text";
 import "../App.css";
 import Chargement from "./Chargement";
 
@@ -24,6 +26,7 @@ const VideoLike = () => {
       })
       .catch(() => setIsError(true));
   }, []);
+  console.log("like :", video);
   if (isError) {
     return <div>not found</div>;
   }
@@ -39,7 +42,33 @@ const VideoLike = () => {
                 className="VideoLike-content"
                 to={`/players/${videoId}`}>
                 <img src={video.snippet.thumbnails.medium.url} alt="" />
-                <p>{video.snippet.title}</p>
+                <div className="videoLike-params">
+                  <ShowMoreText
+                    className="video-like"
+                    lines={1}
+                    more=""
+                    less="Show less"
+                    anchorClass="show-more-less-clickable"
+                    expanded={false}
+                    truncatedEndingComponent={"..."}>
+                    <p className="localized">{video.snippet.channelTitle}</p>
+                  </ShowMoreText>
+                  <ShowMoreText
+                    className="video-like2"
+                    lines={1}
+                    more=""
+                    less="Show less"
+                    anchorClass="show-more-less-clickable"
+                    expanded={false}
+                    truncatedEndingComponent={"..."}>
+                    <p className="localized">
+                      {video.snippet.localized.description}
+                    </p>
+                  </ShowMoreText>
+                  <div className="comment__info">
+                    publié : {moment(video.snippet.publishedAt).fromNow()}
+                  </div>
+                </div>
               </Link>
             );
           })
