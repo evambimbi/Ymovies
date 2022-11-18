@@ -27,16 +27,16 @@ Then check my package.json file to see all the dependeces I installed to run my 
 ### Such as :
 
 
-"gapi-script" : for authentification
-"moment" or "react-moment": for converting time data from the api
-"react-google-login" : for google authentification
-"react-numeral" : for converting numeral data such as the number of like for a video
-"react-router-dom" : for pages routes
-"react-router-hash-link": for hash link
-"eslint" or "eslint-plugin-react": for static test
-"prettier": for code format
-"@testinglibrary/react"
-"react-show-more-text" : for hidding long text through 2 lines
+* "gapi-script" : for authentification
+* "moment" or "react-moment": for converting time data from the api
+* "react-google-login" : for google authentification
+* "react-numeral" : for converting numeral data such as the number of like for a video
+* "react-router-dom" : for pages routes
+* "react-router-hash-link": for hash link
+* "eslint" or "eslint-plugin-react": for static test
+* "prettier": for code format
+* "@testinglibrary/react"
+* "react-show-more-text" : for hidding long text through 2 lines
 
 ### Configurations
 
