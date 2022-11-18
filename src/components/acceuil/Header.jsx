@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import {faBars,faSearch,faThumbsUp} from "@fortawesome/free-solid-svg-icons";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
-import { faVideo } from "@fortawesome/free-solid-svg-icons";
+import { faVideo,faBell } from "@fortawesome/free-solid-svg-icons";
 import { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate,useParams } from "react-router-dom";
@@ -73,7 +73,9 @@ const Haeder = () => {
             <div className="icon-user">
               <img src={userImg} alt="imageUser" />
             </div>
-            <p className="monCompte">Mon compte</p>
+            <div>
+              <FontAwesomeIcon icon={faBell} />
+            </div>
           </div>
         </div>
       </div>
