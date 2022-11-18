@@ -40,10 +40,6 @@ const Search = () => {
                 className="Search-content"
                 to={`/players/${videoId}`}>
                 <img src={video.snippet.thumbnails.medium.url} alt="" />
-                {/* <p
-                  dangerouslySetInnerHTML={{
-                    __html: ,
-                  }}></p> */}
                 <div className="comment__info3">
                   <ShowMoreText
                     className="video__title"

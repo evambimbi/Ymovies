@@ -1,4 +1,5 @@
-Project description
+# Project description
+*** 
 
 Hello, I am Eveline MBIMBI. Backend Developer and Database Designer. My app is named Personal Youtube Player
 
@@ -12,7 +13,8 @@ Vite is a blazing fast frontend build tool that includes features like Hot Modul
 
 Using the two in conjunction is one of the fastest ways to build a web app.
 
-Getting Started
+## Getting Started
+
 By default, Replit runs the dev script, but you can configure it by changing the run field in the configuration file. Here are the vite docs for serving production websites
 
 To start this in local, you should write "npm run dev"
@@ -22,7 +24,8 @@ Just rename any file from .jsx to .tsx. You can also try our [TypeScript Templat
 
 Then check my package.json file to see all the dependeces I installed to run my app
 
-Such as :
+### Such as :
+
 
 "gapi-script" : for authentification
 "moment" or "react-moment": for converting time data from the api
@@ -34,4 +37,16 @@ Such as :
 "prettier": for code format
 "@testinglibrary/react"
 "react-show-more-text" : for hidding long text through 2 lines
+
+### Configurations
+
+to install the project
+```
+$ git clone https://git@github.com:evambimbi/Ymovies.git
+$ cd ../path/to/the/Ymovies
+$ npm install
+$ npm run dev
+```
+
+
 For any contact : evelinembimbi@gmail.com

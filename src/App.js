@@ -63,16 +63,18 @@ function App() {
   const noAcces = () => {
     if (!token) {
       navigate("/");
+      
     }
   };
   const signOut = () => {
     const auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(() => {
-      setUser(null);
-      console.log("User signed out.");
-      navigate("/");
-      localStorage.removeItem("token");
-    });
+    setUser(null);
+    console.log("User signed out.");
+    navigate("/");
+    localStorage.removeItem("token"); 
+      window.location.reload()
+  });
   };
   const Layout = ({ children }) => {
     return (

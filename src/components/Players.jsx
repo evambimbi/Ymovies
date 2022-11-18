@@ -18,7 +18,7 @@ const Players = () => {
         setLoading(false);
       });
   }, []);
-
+console.log("player :", video);
   return (
     <>
       <div className="player">
