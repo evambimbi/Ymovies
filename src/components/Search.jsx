@@ -4,8 +4,11 @@ import Chargement from "./Chargement";
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import moment from "moment/moment";
+import "moment/locale/fr";
 import ShowMoreText from "react-show-more-text";
 import "../App.css"
+
+moment.locale("fr");
 
 const Search = () => {
   const { SearchQuery } = useParams();
@@ -28,7 +31,7 @@ const Search = () => {
   return (
     <>
       <p className="resutat_recherche">
-        Résultats de la recherche : {SearchQuery}
+        Rèsultats de la recherche : {SearchQuery}
       </p>
       <div className="Search">
         {!loading ? (

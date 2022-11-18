@@ -2,10 +2,11 @@ import React,{useState,useEffect} from 'react'
 import { useParams,Link } from 'react-router-dom';
 import Chargement from "./Chargement";
 import moment from "moment/moment";
+import "moment/locale/fr";
 import ShowMoreText from "react-show-more-text";
 import "./connexion/Connexion.css";
 
-
+moment.locale("fr");
 const VideoChannel = () => {
         const { channelId } = useParams();
         const [Channel, setChannel] = useState([]);

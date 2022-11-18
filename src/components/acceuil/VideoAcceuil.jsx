@@ -7,8 +7,11 @@ import { Link } from "react-router-dom";
 import Chargement from "../Chargement";
 import numeral from 'numeral';
 import moment from 'moment/moment';
+import "moment/locale/fr";
 import ShowMoreText from "react-show-more-text";
 import "./Header.css";
+
+moment.locale("fr");
 
 const VideoAcceuil = () => {
   const { userToken } = useContext(Context);
@@ -29,7 +32,7 @@ const VideoAcceuil = () => {
   }, [userToken]);
   return (
     <>
-      <p className="videoAcceuil-title">Les vidéos Populaires</p>
+      <p className="videoAcceuil-title">Les vidèos Populaires</p>
       <div className="videoAcceuil">
         {!loading ? (
           video.items?.map((item) => {
