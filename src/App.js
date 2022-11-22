@@ -14,6 +14,7 @@ import Search from "./components/Search";
 import VideoLike from "./components/VideoLike";
 import Haeder from "./components/acceuil/Header";
 import Acceuil from "./components/acceuil/Acceuil";
+import Profiluser from "./components/Profiluser";
 
 function App() {
   const [userToken, setUserToken] = useState("");
@@ -139,6 +140,14 @@ function App() {
             element={
               <Layout>
                 <VideoLike />
+              </Layout>
+            }
+          />
+          <Route
+            path="/profilUser"
+            element={
+              <Layout>
+                <Profiluser />
               </Layout>
             }
           />
