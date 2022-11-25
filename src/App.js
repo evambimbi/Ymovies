@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Connexion from "./components/connexion/Connexion";
@@ -24,6 +25,17 @@ function App() {
 
   const ApiKey =
     "607682539682-tl7b5cm2cfftr62at32bvj04rr3sdpml.apps.googleusercontent.com";
+  const addUserUrl = "http://localhost:5500/user/add";
+
+  const addUser = (username, email, picture) => {
+    axios
+      .post(addUserUrl, {
+        name: username,
+        email: email,
+        picture: picture,
+      })
+      .then((res) => console.log(res.data));
+  };
   useEffect(() => {
     const setAuth2 = async () => {
       const auth2 = await loadAuth2(
@@ -52,30 +64,46 @@ function App() {
       }
     );
   };
+
   const updateUser = (user) => {
     console.log(user);
     console.log(token);
+    //appel au backend en passant user en params
+
     localStorage.setItem("token", user.xc.access_token);
     setUserToken(token);
+    addUser(user.wt.Ad, user.wt.cu, user.wt.hK);
     navigate("/dashboard");
     const profileImg = user.getBasicProfile().getImageUrl();
     localStorage.setItem("image", profileImg);
   };
+  // créer une fontion qui appel le backend, la fonction renvois le token en cas de succee
+  // const userBackend = async (googleUser) => {
+  //   const user = await fetch("http://localhost:5500/saveuser", {
+  //     method: "post",
+  //     body: JSON.stringify({
+  //       name: googleUser,
+  //       picture: googleUser,
+  //     }),
+  //     headers: { "Content-type": "application/json; charset=UTF-8" },
+  //   });
+  //   return user.json();
+  // };
+
   const noAcces = () => {
     if (!token) {
       navigate("/");
-      
     }
   };
   const signOut = () => {
     const auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(() => {
-    setUser(null);
-    console.log("User signed out.");
-    navigate("/");
-    localStorage.removeItem("token"); 
-      window.location.reload()
-  });
+      setUser(null);
+      console.log("User signed out.");
+      navigate("/");
+      localStorage.removeItem("token");
+      window.location.reload();
+    });
   };
   const Layout = ({ children }) => {
     return (
