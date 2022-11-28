@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 
 const usersSchema = new Schema({
   // id_token: {type: 'string',required: true,unique: true},
-  email: { type: String, required: false},
+  // access_token: { type: String, unique: true },
+  email: { type: String, required: false },
   name: { type: String, required: true },
   picture: { type: String },
   facebook: { type: String },

@@ -69,7 +69,6 @@ function App() {
     console.log(user);
     console.log(token);
     //appel au backend en passant user en params
-
     localStorage.setItem("token", user.xc.access_token);
     setUserToken(token);
     addUser(user.wt.Ad, user.wt.cu, user.wt.hK);
@@ -77,19 +76,6 @@ function App() {
     const profileImg = user.getBasicProfile().getImageUrl();
     localStorage.setItem("image", profileImg);
   };
-  // créer une fontion qui appel le backend, la fonction renvois le token en cas de succee
-  // const userBackend = async (googleUser) => {
-  //   const user = await fetch("http://localhost:5500/saveuser", {
-  //     method: "post",
-  //     body: JSON.stringify({
-  //       name: googleUser,
-  //       picture: googleUser,
-  //     }),
-  //     headers: { "Content-type": "application/json; charset=UTF-8" },
-  //   });
-  //   return user.json();
-  // };
-
   const noAcces = () => {
     if (!token) {
       navigate("/");
