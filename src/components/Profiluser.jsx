@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { PhotoCamera } from "@mui/icons-material";
@@ -8,6 +9,14 @@ import "./Profil.css";
 import { IconButton } from "@mui/material";
 
 const Profiluser = () => {
+  const [form,setForm] = useState('');
+ 
+
+  const hadleForm =(e)=>{
+    setForm(e.target.value);
+     console.log(e.target.value);
+  };
+ 
     const userImg = window.localStorage.getItem("image");
     console.log(userImg);
   return (
@@ -43,25 +52,29 @@ const Profiluser = () => {
             <div>
               <TextField
                 id="outlined-required"
-                label="Name"
-                defaultValue="eveline mbimbi"
+                label="Nom"
+                defaultValue={form}
               />
               <TextField
                 id="outlined-required"
                 label="lien facebook"
-                defaultValue="eveline mbimbi"
+                defaultValue={form}
               />
               <TextField
                 id="outlined-required"
                 label="lien instagram"
-                defaultValue="eveline mbimbi"
+                defaultValue={form}
+              />
+              <TextField
+                id="outlined-required"
+                label="lien twitter"
+                defaultValue={form}
               />
             </div>
           </Box>
           <Stack direction="row" spacing={2}>
-            <Button variant="contained">Modifier</Button>
-            <Button variant="contained" color="success">
-              Annuler
+            <Button variant="contained" onClick={hadleForm}>
+              Modifier
             </Button>
           </Stack>
         </form>
