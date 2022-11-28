@@ -61,10 +61,12 @@ const Haeder = () => {
   return (
     <>
       <div className="haeder">
-        <div className="logo-haeder">
-          <FontAwesomeIcon icon={faYoutube} />
-          <h1 className="haeder-title">Ymovies</h1>
-        </div>
+        <Link to="/dashboard">
+          <div className="logo-haeder">
+            <FontAwesomeIcon icon={faYoutube} />
+            <h1 className="haeder-title">Ymovies</h1>
+          </div>
+        </Link>
         <form onSubmit={handleSearch} className="input-recherche">
           <input
             id="search-input"
@@ -151,7 +153,7 @@ const Haeder = () => {
                 </Link>
               </Menu>
             </div>
-            <Notifify/>
+            <Notifify />
           </div>
         </div>
       </div>
