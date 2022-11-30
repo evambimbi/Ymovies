@@ -125,7 +125,7 @@ font-size:16px;
 }
 .videoPlayer{
   display: flex;
-  position: fixed;
+  /* position: fixed; */
   width: 40%;
 }
 .SearchRelated{

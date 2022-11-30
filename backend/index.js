@@ -1,6 +1,7 @@
 const http = require("http");
 const express = require("express");
 const userRoutes = require("./routes/userRoute");
+const commentRoutes = require("./routes/commentRoute");
 
 const app = require("./app");
 
@@ -10,6 +11,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // app.use("/", require("./routes/userRoute"));
 app.use("/user", userRoutes);
+app.use("/comment", commentRoutes);
 
 const { PORT } = require("./config");
 

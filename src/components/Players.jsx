@@ -2,6 +2,7 @@ import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Chargement from "./Chargement";
+import Comments from "./comments/Comments";
 import "./connexion/Connexion.css";
 
 const Players = () => {
@@ -18,7 +19,6 @@ const Players = () => {
         setLoading(false);
       });
   }, []);
-console.log("player :", video);
   return (
     <>
       <div className="player">
@@ -31,7 +31,10 @@ console.log("player :", video);
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen="allowFullScreen"></iframe>
         </div>
-        <div className="SearchRelated">
+
+        <Comments currentUserId="1"/>
+
+        {/* <div className="SearchRelated">
           {!loading ? (
             video?.map((video, index) => {
               const videoId = video.id.videoId;
@@ -48,7 +51,7 @@ console.log("player :", video);
           ) : (
             <Chargement />
           )}
-        </div>
+        </div> */}
       </div>
     </>
   );

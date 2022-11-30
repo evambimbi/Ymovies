@@ -34,8 +34,12 @@ function App() {
         email: email,
         picture: picture,
       })
-      .then((res) => console.log(res.data));
+      .then((res) => console.log(res));
   };
+  // const retrieve =()=>{
+  //   axios.get(`http://localhost:5500/user/add`,user).then((res) => console.log(res));
+
+  // }
   useEffect(() => {
     const setAuth2 = async () => {
       const auth2 = await loadAuth2(

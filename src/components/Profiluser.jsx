@@ -1,4 +1,5 @@
 import * as React from "react";
+import axios from "axios";
 import { useState } from "react";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -9,14 +10,43 @@ import "./Profil.css";
 import { IconButton } from "@mui/material";
 
 const Profiluser = () => {
-  const [form,setForm] = useState('');
+  const [Nom, setNom] = useState("");
+  const [Facebook, setFacebook]= useState("");
+  const [Twitter, setTwitter]= useState("");
+  const [Instagram, setInstagram]= useState("");
  
 
-  const hadleForm =(e)=>{
-    setForm(e.target.value);
-     console.log(e.target.value);
+  const hadleNom =(e)=>{
+    const name = e.target.value;
+    setNom(name);
   };
- 
+  const hadleFacebook = (e) => {
+    const facebook = e.target.value;
+    setFacebook(facebook);
+  };
+  const hadleTwitter = (e) => {
+    const twitter = e.target.value;
+    setTwitter(twitter);
+  };
+  const hadleInstagram = (e) => {
+    const instragram = e.target.value;
+    setInstagram(instragram);
+  };
+
+   const handleSubmit = (e) => {
+     e.preventDefault();
+     const userData ={
+       name :Nom,
+       facebook :Facebook,
+       twitter :Twitter,
+       instagram :Instagram,
+     }
+     axios
+       .put(`http://localhost:5500/user/update/${id}`, userData)
+       .then((res) => {
+         localStorage.setItem("_id", res.data.user._id);
+         console.log(res);
+       });};
     const userImg = window.localStorage.getItem("image");
     console.log(userImg);
   return (
@@ -41,7 +71,7 @@ const Profiluser = () => {
         </form>
       </div>
       <div className="profil_update">
-        <form>
+        <form onSubmit={handleSubmit}>
           <Box
             component="form"
             sx={{
@@ -53,29 +83,31 @@ const Profiluser = () => {
               <TextField
                 id="outlined-required"
                 label="Nom"
-                defaultValue={form}
+                defaultValue={Nom}
+                onChange={hadleNom}
               />
               <TextField
                 id="outlined-required"
                 label="lien facebook"
-                defaultValue={form}
+                defaultValue={Facebook}
+                onChange={hadleFacebook}
               />
               <TextField
                 id="outlined-required"
                 label="lien instagram"
-                defaultValue={form}
+                defaultValue={Twitter}
+                onChange={hadleTwitter}
               />
               <TextField
                 id="outlined-required"
                 label="lien twitter"
-                defaultValue={form}
+                defaultValue={Instagram}
+                onChange={hadleInstagram}
               />
             </div>
           </Box>
           <Stack direction="row" spacing={2}>
-            <Button variant="contained" onClick={hadleForm}>
-              Modifier
-            </Button>
+            <Button type="submit" variant="contained">Modifier</Button>
           </Stack>
         </form>
       </div>
