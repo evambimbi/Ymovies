@@ -2,15 +2,19 @@ const http = require("http");
 const express = require("express");
 const userRoutes = require("./routes/userRoute");
 const commentRoutes = require("./routes/commentRoute");
+const cors = require("cors");
+const bodyParser = require("body-parser");
 
 const app = require("./app");
 
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-// app.set('view engine',"ejs");
-
+app.use(cors());
 // app.use("/", require("./routes/userRoute"));
 app.use("/user", userRoutes);
+// app.post("user/update/:user",(req,res)=>{console.log(req.body)});
+
 app.use("/comment", commentRoutes);
 
 const { PORT } = require("./config");

@@ -1,8 +1,8 @@
 import * as React from "react";
 import axios from "axios";
 import { useState } from "react";
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
 import { PhotoCamera } from "@mui/icons-material";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
@@ -11,12 +11,22 @@ import { IconButton } from "@mui/material";
 
 const Profiluser = () => {
   const [Nom, setNom] = useState("");
-  const [Facebook, setFacebook]= useState("");
-  const [Twitter, setTwitter]= useState("");
-  const [Instagram, setInstagram]= useState("");
- 
+  const [Facebook, setFacebook] = useState("");
+  const [Twitter, setTwitter] = useState("");
+  const [Instagram, setInstagram] = useState("");
+  const [selectedFile, setSelectedFile] = useState();
+  const [isFilePicked, setIsFilePicked] = useState(false);
+  const [selected, setIsSelected] = useState();
 
-  const hadleNom =(e)=>{
+  const id = localStorage.getItem("user");
+  console.log(id);
+
+  const changeHandler = (event) => {
+    setSelectedFile(event.target.files[0]);
+    setIsSelected(true);
+    console.log(selectedFile);
+  };
+  const hadleNom = (e) => {
     const name = e.target.value;
     setNom(name);
   };
@@ -33,45 +43,75 @@ const Profiluser = () => {
     setInstagram(instragram);
   };
 
-   const handleSubmit = (e) => {
-     e.preventDefault();
-     const userData ={
-       name :Nom,
-       facebook :Facebook,
-       twitter :Twitter,
-       instagram :Instagram,
-     }
-     axios
-       .put(`http://localhost:5500/user/update/${id}`, userData)
-       .then((res) => {
-         localStorage.setItem("_id", res.data.user._id);
-         console.log(res);
-       });};
-    const userImg = window.localStorage.getItem("image");
-    console.log(userImg);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+
+    formData.append("file", selectedFile);
+    formData.append("upload_preset", "eveline");
+
+    fetch("https://api.cloudinary.com/v1_1/dgfc623jt/upload", {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log("Success:", result.secure_url);
+        if (result.secure_url) {
+          localStorage.setItem("image", result.secure_url);
+          const userData = {
+            name: Nom,
+            facebook: Facebook,
+            twitter: Twitter,
+            instagram: Instagram,
+            picture: isFilePicked,
+          };
+          axios
+            .post(`http://localhost:5500/user/update/${id}`, userData)
+            .then((res) => {
+              localStorage.setItem("user", res.data.user);
+              localStorage.setItem("name ",res.data.user.name);
+              console.log(res);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        }
+        setIsFilePicked(result.secure_url);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+  const userImg = window.localStorage.getItem("image");
+
   return (
     <div className="Profiluser">
-      <div className="Profil_img">
-        <img src={userImg} alt="imageUser" />
-        <form className="form" method="post">
-          <input
-            accept="image/*"
-            id="icon-button-file"
-            type="file"
-            style={{ display: "none" }}
-          />
-          <label htmlFor="icon-button-file">
-            <IconButton
-              color="primary"
-              aria-label="upload picture"
-              component="span">
-              <PhotoCamera />
-            </IconButton>
-          </label>
-        </form>
-      </div>
-      <div className="profil_update">
-        <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="formprofil" method="post">
+        <div className="profil_update">
+          <div className="Profil_img">
+            <img src={userImg} alt="imageUser" />
+            <form className="form" method="post">
+              <input
+                accept="image/*"
+                id="icon-button-file"
+                type="file"
+                style={{ display: "none" }}
+                onChange={changeHandler}
+              />
+              <label htmlFor="icon-button-file">
+                <IconButton
+                  color="primary"
+                  aria-label="upload picture"
+                  component="span">
+                  <PhotoCamera />
+                </IconButton>
+              </label>
+            </form>
+          </div>
+        </div>
+        <div class="input-profil">
           <Box
             component="form"
             sx={{
@@ -79,38 +119,44 @@ const Profiluser = () => {
             }}
             noValidate
             autoComplete="off">
-            <div>
+            <div className="">
               <TextField
                 id="outlined-required"
                 label="Nom"
+                name="name"
                 defaultValue={Nom}
                 onChange={hadleNom}
               />
               <TextField
                 id="outlined-required"
                 label="lien facebook"
+                name="facebook"
                 defaultValue={Facebook}
                 onChange={hadleFacebook}
               />
               <TextField
                 id="outlined-required"
                 label="lien instagram"
+                name="instragram"
                 defaultValue={Twitter}
                 onChange={hadleTwitter}
               />
               <TextField
                 id="outlined-required"
                 label="lien twitter"
+                name="twitter"
                 defaultValue={Instagram}
                 onChange={hadleInstagram}
               />
             </div>
           </Box>
           <Stack direction="row" spacing={2}>
-            <Button type="submit" variant="contained">Modifier</Button>
+            <Button type="submit" variant="contained">
+              Modifier
+            </Button>
           </Stack>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   );
 };

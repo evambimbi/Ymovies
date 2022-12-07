@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const mongoose = require("./database");
 
-
 mongoose();
 
 app.use((req, res, next) => {

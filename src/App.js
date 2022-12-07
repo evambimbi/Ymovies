@@ -34,7 +34,10 @@ function App() {
         email: email,
         picture: picture,
       })
-      .then((res) => console.log(res));
+      .then((res) => {
+        console.log(res);
+        localStorage.setItem("user", res.data.user._id);
+      });
   };
   // const retrieve =()=>{
   //   axios.get(`http://localhost:5500/user/add`,user).then((res) => console.log(res));

@@ -1,3 +1,4 @@
+
 const userModel = require("../models/userModel");
 
 
@@ -19,27 +20,31 @@ exports.addUser = (req, res, next) => {
            res.status(400).json({ error });
          });
     }else{
-      res.status(200).json({message : "l'utilisateur existe déjà"})
+      res.status(200).json({user})
     }
   })
   .catch((error) =>{ res.status(400).json({error})}) 
 };
 
 exports.apdateUserprofil=(req,res,next)=>{
-  const id =req.params._id;
+  const id =req.params.user;
+ 
+  
   const {name,email,picture,facebook,twitter,instagram}=req.body;
-  id.findOneAndUpdate(
-    id,
-    {
-      name,
-      email,
-      picture,
-      facebook,
-      twitter,
-      instagram,
-    },
-    { new: true, returnOriginal: false }
-  )
+   console.log(id);
+   console.log(req.body);
+  userModel.findOneAndUpdate(
+      id,
+      {
+        name,
+        email,
+        picture,
+        facebook,
+        twitter,
+        instagram,
+      },
+      { new: true, returnOriginal: false }
+    )
     .then(() => res.status(201).json())
     .catch((error) => {
       res.status(400).json({ error });

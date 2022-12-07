@@ -4,7 +4,7 @@ const userController = require("../controller/userController");
 
 // router.get('/createUser',createUser);
 router.post("/add", userController.addUser);
-router.get("/upadate", userController.apdateUserprofil);
+router.post("/update/:user", userController.apdateUserprofil);
 // router.get("/add", userController.finduser);
 
 

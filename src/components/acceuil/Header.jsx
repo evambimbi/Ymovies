@@ -17,6 +17,7 @@ import { Context } from "../../ContextAccount/Context";
 import { useContext } from "react";
 import "./Header.css";
 import Notifify from "../Notification";
+import { Typography } from "@mui/material";
 
 const Haeder = () => {
   const [text, setText] = useState("");
@@ -57,6 +58,8 @@ const Haeder = () => {
   };
 
   const userImg = window.localStorage.getItem("image");
+  const name = window.localStorage.getItem("name");
+  console.log("mon nom :", name);
   console.log(userImg);
   return (
     <>
@@ -91,7 +94,6 @@ const Haeder = () => {
         <div className="profil-user">
           <div className="profil-icon">
             <div className="icon-user">
-              {/* <img src={userImg} alt="imageUser" /> */}
               <Box
                 sx={{
                   display: "flex",
@@ -149,6 +151,9 @@ const Haeder = () => {
                 <Link to="/profilUser">
                   <MenuItem>
                     <Avatar /> Modifié ton profil
+                  </MenuItem>
+                  <MenuItem>
+                    <Typography>{name}</Typography>
                   </MenuItem>
                 </Link>
               </Menu>
