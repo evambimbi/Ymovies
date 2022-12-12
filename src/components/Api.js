@@ -36,7 +36,7 @@ export const getComments = async () => {
     // },
   ];
 };
-const addCommetrUrl = "http://localhost:5500/comment/add";
+const addCommetrUrl = "http://localhost:4000/comment/add";
 export const addComment = (text, parentId = null) => {
   axios
     .post(addCommetrUrl, {

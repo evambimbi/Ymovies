@@ -116,17 +116,17 @@ font-size:16px;
 }
 .player{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
-  width: 70%;
+  width: 75%;
   padding-top: 100px;
   padding-left: 50px;
   margin: auto;
 }
 .videoPlayer{
-  display: flex;
+  margin-left: 30px;
   /* position: fixed; */
-  width: 40%;
+  /* width: 40%; */
 }
 .SearchRelated{
   display: flex;

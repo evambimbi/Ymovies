@@ -23,17 +23,15 @@ const Players = () => {
     <>
       <div className="player">
         <div className="videoPlayer">
-           <iframe
-            width="560"
-            height="315"
+          <iframe
+            width="700"
+            height="400"
             src={`https://www.youtube.com/embed/${videoId}`}
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen="allowFullScreen"></iframe>
         </div>
-
-        <Comments currentUserId="1"/>
-
+        <Comments currentUserId="1" />
         {/* <div className="SearchRelated">
           {!loading ? (
             video?.map((video, index) => {

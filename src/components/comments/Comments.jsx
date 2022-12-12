@@ -1,86 +1,86 @@
+import * as React from "react";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import axios from "axios";
 import { useState, useEffect } from "react";
-import CommentForm from "./CommentForm";
-import Comment from "./Comment";
 import "./Style.css";
-import {
-  getComments as getCommentsApi,
-  createComment as createCommentApi,
-  updateComment as updateCommentApi,
-  deleteComment as deleteCommentApi,
-} from "../Api";
+import { useParams } from "react-router-dom";
 
-const Comments = ({ commentsUrl, currentUserId }) => {
-  const [backendComments, setBackendComments] = useState([]);
-  const [activeComment, setActiveComment] = useState(null);
-  const rootComments = backendComments.filter(
-    (backendComment) => backendComment.parentId === null
-  );
-  const getReplies = (commentId) =>
-    backendComments
-      .filter((backendComment) => backendComment.parentId === commentId)
-      .sort(
-        (a, b) =>
-          new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
-      );
-  const addComment = (text, parentId) => {
-    createCommentApi(text, parentId).then((comment) => {
-      setBackendComments([comment, ...backendComments]);
-      setActiveComment(null);
-    });
-  };
+const Comments = ({ userId }) => {
+  const [comment, setComment] = useState("");
+  const [commentaire, setCommentaire] = useState([]);
+  const { videoId } = useParams();
+  console.log(comment);
 
-  const updateComment = (text, commentId) => {
-    updateCommentApi(text).then(() => {
-      const updatedBackendComments = backendComments.map((backendComment) => {
-        if (backendComment.id === commentId) {
-          return { ...backendComment, body: text };
-        }
-        return backendComment;
+  const commentUrl = `http://localhost:4000/comment/add`;
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post(commentUrl, {
+        message: comment,
+        userId: localStorage.getItem("user"),
+        idVideo: videoId,
+      })
+      .then((res) => {
+        console.log(res);
       });
-      setBackendComments(updatedBackendComments);
-      setActiveComment(null);
-    });
-  };
-  const deleteComment = (commentId) => {
-    if (window.confirm("Are you sure you want to remove comment?")) {
-      deleteCommentApi().then(() => {
-        const updatedBackendComments = backendComments.filter(
-          (backendComment) => backendComment.id !== commentId
-        );
-        setBackendComments(updatedBackendComments);
-      });
-    }
   };
 
   useEffect(() => {
-    getCommentsApi().then((data) => {
-      setBackendComments(data);
-    });
+    fetch(`http://localhost:4000/comment`)
+      .then((res) => res.json())
+      .then((data) => setCommentaire(data));
   }, []);
+  console.log("com", commentaire);
   const userImg = window.localStorage.getItem("image");
   console.log(userImg);
 
   return (
     <div className="comments">
-      {/* <h3 className="comments-title">Comments</h3> */}
-      <div className="comment-form-title">
-        <img src={userImg} alt="imageUser" />
-      </div>
-      <CommentForm submitLabel="Write" handleSubmit={addComment} />
-      <div className="comments-container">
-        {rootComments.map((rootComment) => (
-          <Comment
-            key={rootComment.id}
-            comment={rootComment}
-            replies={getReplies(rootComment.id)}
-            activeComment={activeComment}
-            setActiveComment={setActiveComment}
-            addComment={addComment}
-            deleteComment={deleteComment}
-            updateComment={updateComment}
-            currentUserId={currentUserId}
-          />
-        ))}
+      <div>
+        <form className="form_comment" onSubmit={onSubmit}>
+          {/* <textarea
+            id="search-input"
+            type="text"
+            className="recherche"
+            placeholder="Commenter"
+            onChange={(e) => setComment(e.target.value)}
+            value={comment}></textarea> */}
+          <Box sx={{ display: "flex", alignItems: "flex-end" }}>
+            <AccountCircle sx={{ color: "action.active", mr: 1, my: 0.5 }} />
+            <TextField
+              id="input-with-sx"
+              label="Commenter"
+              variant="standard"
+              onChange={(e) => setComment(e.target.value)}
+            />
+          </Box>
+          <button type="Submit" className="comment_buttun">
+            envoyer
+          </button>
+        </form>
+        {commentaire
+          ?.filter((comment) => comment.idVideo === videoId)
+          .map((comment) => {
+            return (
+              <>
+                <div className="comment_add">
+                  <div className="commnt_user_profil">
+                    <img src={userImg} alt="imageUser" />
+                    <p className="name_user_comment">{comment?.userId.name}</p>
+                  </div>
+                  <div className="comment-content">
+                    <p className="commentaire">{comment?.message}</p>
+                  </div>
+                  <div className="comment_reponse">
+                    <span>Repondre</span>
+                  </div>
+                </div>
+              </>
+            );
+          })}
       </div>
     </div>
   );

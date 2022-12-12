@@ -1,14 +1,57 @@
+.comment_add{
+  margin-bottom: 30px;
+}
+.form_comment{
+ display: flex;
+ gap:10px;
+ margin-bottom: 30px;
+}
 .comments{
 margin-top: 20px;
+margin-left: 30px;
 }
 .comments img{
-width: 50px;
-height: 50px;
+width: 30px;
+height: 30px;
 object-fit: cover;
 border-radius: 30px
-  }
+}
+.comment_buttun{
+  width: 100px;
+  height: 30px;
+  margin-top: 20px;
+  background-color: #4DBDFA;
+  color: #fff;
+  cursor: pointer;
+  border-style: none;
+  font-size: 16px;
+  font-family: 'Laila Bold';
+  border-radius: 10px;
+}
+.commnt_user_profil{
+  display: flex;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+.name_user_comment{
+ font-size: 16px;
+ font-family: 'Laila Bold';
+}
+.comment-content{
+  display: flex;
+  margin-left: 40px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-family: 'laila Medium';
+  color: #1B1622;
+}
+.comment_reponse span{
+  margin-left: 40px;
+  font-size: 16px;
+  font-family:'laila regular' ;
+}
   
-  .comments-title {
+  /* .comments-title {
     font-size: 30px;
     margin-bottom: 20px;
   }
@@ -19,13 +62,13 @@ border-radius: 30px
   
   .comment-form-title img{
     /* font-size: 22px; */
-    width: 10%;
+    /* width: 10%;
     height: 10%;
     object-fit: cover;
     border-radius: 30px
-  }
+  } */
   
-  .comment-form-textarea {
+  /* .comment-form-textarea {
     width: 100%;
     height: 80px;
     margin-bottom: 8px;
@@ -58,9 +101,9 @@ border-radius: 30px
   .comment {
     display: flex;
     margin-bottom: 28px;
-  }
+  }  */
   
-  .comment-image-container {
+  /* .comment-image-container {
     margin-right: 12px;
   }
   
@@ -104,4 +147,4 @@ border-radius: 30px
   
   .replies {
     margin-top: 20px;
-  }
+  } */

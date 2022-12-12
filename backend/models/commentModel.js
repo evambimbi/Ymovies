@@ -1,12 +1,11 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const Schema = mongoose.Schema;
-
-const commentSchema = new Schema({
-  name: { type: String},
-  body: { type: String},
+const commentSchema = mongoose.Schema({
+  message: { type: String, required: true },
+  time: { type: String },
+  idVideo: { type: String },
+  userId: { type: mongoose.Schema.Types.ObjectId,ref:'User' },
+  subComments: { type: Array },
 });
 
-const commentModel = mongoose.model("comment", commentSchema);
-
-module.exports = commentModel;
+module.exports = mongoose.model("Comments", commentSchema);
