@@ -41,18 +41,11 @@ const Comments = ({ userId }) => {
     <div className="comments">
       <div>
         <form className="form_comment" onSubmit={onSubmit}>
-          {/* <textarea
-            id="search-input"
-            type="text"
-            className="recherche"
-            placeholder="Commenter"
-            onChange={(e) => setComment(e.target.value)}
-            value={comment}></textarea> */}
           <Box sx={{ display: "flex", alignItems: "flex-end" }}>
             <AccountCircle sx={{ color: "action.active", mr: 1, my: 0.5 }} />
             <TextField
               id="input-with-sx"
-              label="Commenter"
+              label="Laisser un commentaire"
               variant="standard"
               onChange={(e) => setComment(e.target.value)}
             />
@@ -68,7 +61,7 @@ const Comments = ({ userId }) => {
               <>
                 <div className="comment_add">
                   <div className="commnt_user_profil">
-                    <img src={userImg} alt="imageUser" />
+                    <img src={comment?.userId.picture} alt="imageUser" />
                     <p className="name_user_comment">{comment?.userId.name}</p>
                   </div>
                   <div className="comment-content">

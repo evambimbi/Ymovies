@@ -30,9 +30,9 @@ const Players = () => {
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen="allowFullScreen"></iframe>
+          <Comments />
         </div>
-        <Comments currentUserId="1" />
-        {/* <div className="SearchRelated">
+        <div className="SearchRelated">
           {!loading ? (
             video?.map((video, index) => {
               const videoId = video.id.videoId;
@@ -49,7 +49,7 @@ const Players = () => {
           ) : (
             <Chargement />
           )}
-        </div> */}
+        </div>
       </div>
     </>
   );

@@ -25,7 +25,7 @@ function App() {
 
   const ApiKey =
     "607682539682-tl7b5cm2cfftr62at32bvj04rr3sdpml.apps.googleusercontent.com";
-  const addUserUrl = "http://localhost:6000/user/add";
+  const addUserUrl = "http://localhost:4000/user/add";
 
   const addUser = (username, email, picture) => {
     axios
@@ -39,10 +39,7 @@ function App() {
         localStorage.setItem("user", res.data.user._id);
       });
   };
-  // const retrieve =()=>{
-  //   axios.get(`http://localhost:5500/user/add`,user).then((res) => console.log(res));
-
-  // }
+  
   useEffect(() => {
     const setAuth2 = async () => {
       const auth2 = await loadAuth2(
