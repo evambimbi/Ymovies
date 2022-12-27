@@ -19,7 +19,7 @@ const Profiluser = () => {
   const [selected, setIsSelected] = useState();
 
   const id = localStorage.getItem("user");
-  console.log(id);
+  ;
 
   const changeHandler = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -68,7 +68,7 @@ const Profiluser = () => {
             picture: isFilePicked,
           };
           axios
-            .post(`http://localhost:4000/user/update/${id}`, userData)
+            .post(`http://localhost:5000/user/update/${id}`, userData)
             .then((res) => {
               localStorage.setItem("user", res.data.user);
               localStorage.setItem("name ",res.data.user.name);

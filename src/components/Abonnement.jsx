@@ -25,7 +25,7 @@ const Abonnement = () => {
         setLoading(false);
       });
   }, [token]);
-  console.log("video : ", Abonnement);
+ 
   return (
     <>
       <p className="chaine-title">Mes chaînes Abonnèes</p>

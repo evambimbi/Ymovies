@@ -1,27 +1,25 @@
 const Comment = require("../models/commentModel");
+const action = require("../action/commentAction");
 
 exports.createComment = (req, res, next) => {
-  const comment = new Comment({
-    message: req.body.message,
-    time: req.body.time,
-    idVideo: req.body.idVideo,
-    userId: req.body.userId,
-    subComments: req.body.subComments,
-  });
-  comment
-    .save()
-    .then((data) => {
+  action.createComment(
+    { ...req.body },
+    (data) => {
       res.status(201).json({
         message: "comment saved successfully!",
-        data: data,
+       /*  data: data, */
       });
-    })
-    .catch((error) => {
+    },
+
+    (error) => {
       res.status(400).json({
         error: error,
       });
-    });
+    }
+  );
+
 };
+
 exports.getAllComment = (req, res, next) => {
   Comment.find()
     .populate("userId")
@@ -34,4 +32,16 @@ exports.getAllComment = (req, res, next) => {
         error: error,
       });
     });
+};
+
+exports.oneReply= (req, res, next) => {
+  action.reply({...req.body},
+    (data)=>{
+   res.status(200).json({message:"un sous commentaire laisser"})
+    
+  },
+  (error)=>{
+    res.status(400).json({error})
+  }
+    )
 };

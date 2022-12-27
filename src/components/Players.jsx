@@ -5,7 +5,7 @@ import Chargement from "./Chargement";
 import Comments from "./comments/Comments";
 import "./connexion/Connexion.css";
 
-const Players = () => {
+const Players = ({ socket }) => {
   let { videoId } = useParams();
   const [video, setVideo] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -30,7 +30,7 @@ const Players = () => {
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen="allowFullScreen"></iframe>
-          <Comments />
+          <Comments socket={socket}  />
         </div>
         <div className="SearchRelated">
           {!loading ? (

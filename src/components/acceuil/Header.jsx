@@ -22,6 +22,7 @@ import { Typography } from "@mui/material";
 const Haeder = () => {
   const [text, setText] = useState("");
   const [menu, setMenu] = useState(true);
+  const [picture, setPicture] = useState([]);
   const params = useParams();
   const navigate = useNavigate();
 
@@ -57,10 +58,19 @@ const Haeder = () => {
     console.log(menu);
   };
 
+   useEffect(() => {
+     fetch(`http://localhost:5000/user/getuser`)
+       .then((response) => {
+         return response.json();
+       })
+       .then((data) => {
+         setPicture(data);
+         console.log(data);
+       });
+   }, []);
+  
   const userImg = window.localStorage.getItem("image");
-  const name = window.localStorage.getItem("name");
-  console.log("mon nom :", name);
-  console.log(userImg);
+  
   return (
     <>
       <div className="haeder">
@@ -93,71 +103,77 @@ const Haeder = () => {
         <FontAwesomeIcon icon={faBars} onClick={MobilMenu} />
         <div className="profil-user">
           <div className="profil-icon">
-            <div className="icon-user">
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  textAlign: "center",
-                }}>
-                <Tooltip title="Modification profil">
-                  <IconButton
-                    onClick={handleClick}
-                    size="small"
-                    sx={{ ml: 2 }}
-                    aria-controls={open ? "account-menu" : undefined}
-                    aria-haspopup="true"
-                    aria-expanded={open ? "true" : undefined}>
-                    <Avatar
-                      sx={{ width: 32, height: 32 }}
-                      src={userImg}></Avatar>
-                  </IconButton>
-                </Tooltip>
-              </Box>
-              <Menu
-                anchorEl={anchorEl}
-                id="account-menu"
-                open={open}
-                onClose={handleClose}
-                onClick={handleClose}
-                PaperProps={{
-                  elevation: 0,
-                  sx: {
-                    overflow: "visible",
-                    filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-                    mt: 1.5,
-                    "& .MuiAvatar-root": {
-                      width: 32,
-                      height: 32,
-                      ml: -0.5,
-                      mr: 1,
-                    },
-                    "&:before": {
-                      content: '""',
-                      display: "block",
-                      position: "absolute",
-                      top: 0,
-                      right: 14,
-                      width: 10,
-                      height: 10,
-                      bgcolor: "background.paper",
-                      transform: "translateY(-50%) rotate(45deg)",
-                      zIndex: 0,
-                    },
-                  },
-                }}
-                transformOrigin={{ horizontal: "right", vertical: "top" }}
-                anchorOrigin={{ horizontal: "right", vertical: "bottom" }}>
-                <Link to="/profilUser">
-                  <MenuItem>
-                    <Avatar /> Modifié ton profil
-                  </MenuItem>
-                  <MenuItem>
-                    <Typography>{name}</Typography>
-                  </MenuItem>
-                </Link>
-              </Menu>
-            </div>
+            {picture.data?.map((data)=>{
+              // const user = data.user;
+              return (
+                <div className="icon-user">
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      textAlign: "center",
+                    }}>
+                    <Tooltip title="Modification profil">
+                      <IconButton
+                        onClick={handleClick}
+                        size="small"
+                        sx={{ ml: 2 }}
+                        aria-controls={open ? "account-menu" : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={open ? "true" : undefined}>
+                        <Avatar
+                          sx={{ width: 32, height: 32 }}
+                          src={data?.user.piture}></Avatar>
+                      </IconButton>
+                    </Tooltip>
+                  </Box>
+                  <Menu
+                    anchorEl={anchorEl}
+                    id="account-menu"
+                    open={open}
+                    onClose={handleClose}
+                    onClick={handleClose}
+                    PaperProps={{
+                      elevation: 0,
+                      sx: {
+                        overflow: "visible",
+                        filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+                        mt: 1.5,
+                        "& .MuiAvatar-root": {
+                          width: 32,
+                          height: 32,
+                          ml: -0.5,
+                          mr: 1,
+                        },
+                        "&:before": {
+                          content: '""',
+                          display: "block",
+                          position: "absolute",
+                          top: 0,
+                          right: 14,
+                          width: 10,
+                          height: 10,
+                          bgcolor: "background.paper",
+                          transform: "translateY(-50%) rotate(45deg)",
+                          zIndex: 0,
+                        },
+                      },
+                    }}
+                    transformOrigin={{ horizontal: "right", vertical: "top" }}
+                    anchorOrigin={{ horizontal: "right", vertical: "bottom" }}>
+                    <Link to="/profilUser">
+                      <MenuItem>
+                        <Avatar /> Modifié ton profil
+                      </MenuItem>
+                      <MenuItem>
+                        <Typography>{}</Typography>
+                      </MenuItem>
+                    </Link>
+                  </Menu>
+                </div>
+              );
+            })}
+         
             <Notifify />
           </div>
         </div>

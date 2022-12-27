@@ -16,6 +16,8 @@ import VideoLike from "./components/VideoLike";
 import Haeder from "./components/acceuil/Header";
 import Acceuil from "./components/acceuil/Acceuil";
 import Profiluser from "./components/Profiluser";
+import socketIO from "socket.io-client";
+const socket = socketIO.connect("http://localhost:5000");
 
 function App() {
   const [userToken, setUserToken] = useState("");
@@ -130,7 +132,7 @@ function App() {
             path="/players/:videoId"
             element={
               <Layout>
-                <Players />
+                <Players socket={socket}/>
               </Layout>
             }
           />
