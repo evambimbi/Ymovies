@@ -1,4 +1,4 @@
-const Comment = require("../models/commentModel");
+const { Comment, SubComment } = require("../models/commentModel");
 const action = require("../action/commentAction");
 
 exports.createComment = (req, res, next) => {
@@ -23,6 +23,11 @@ exports.createComment = (req, res, next) => {
 exports.getAllComment = (req, res, next) => {
   Comment.find()
     .populate("userId")
+    .populate({
+      path: "subComments",
+      model: SubComment,
+      populate: { path: "userId" },
+    })
     .then((comments) => {
       res.status(200).json(comments);
     })
@@ -35,13 +40,13 @@ exports.getAllComment = (req, res, next) => {
 };
 
 exports.oneReply= (req, res, next) => {
-  action.reply({...req.body},
-    (data)=>{
-   res.status(200).json({message:"un sous commentaire laisser"})
-    
-  },
-  (error)=>{
-    res.status(400).json({error})
-  }
-    )
+  action.reply(
+    { ...req.body },
+    (data) => {
+      res.status(200).json({ message: "un sous commentaire laisser" });
+    },
+    (error) => {
+      res.status(400).json({ error });
+    }
+  );
 };

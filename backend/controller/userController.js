@@ -1,4 +1,3 @@
-// const { findOneAndUpdate, findById } = require("../models/commentModel");
 const userModel = require("../models/userModel");
 
 exports.addUser = (req, res, next) => {
@@ -29,35 +28,22 @@ exports.addUser = (req, res, next) => {
 };
 
 exports.apdateUserprofil = (req, res, next) => {
-  const id = req.params.user;
-
-  const { name, email, picture, facebook, twitter, instagram } = req.body;
-  console.log(id);
-  console.log(req.body);
-  userModel
-    .findOneAndUpdate(
-      id,
-      {
-        name,
-        email,
-        picture,
-        facebook,
-        twitter,
-        instagram,
-      },
-      { new: true, returnOriginal: false }
-    )
-    .then(() => res.status(201).json())
-    .catch((error) => {
-      res.status(400).json({ error });
-    });
+   userModel.updateOne({ _id: req.params.id }, { ...req.body, _id: req.params.id })
+     .then(() => res.status(200).json({ message: "donnees modifié !" }))
+     .catch((error) => res.status(400).json({ error }));
 };
 
 exports.userData = (req, res, next)=>{
-   const id = req.params.user;
-   console.log(id);
-   userModel.findById(id,(error,data)=>{
-      console.log(data);
-   })
+ userModel
+   .findOne({ email: req.body.email })
+   .then((user) => res.status(200).json(user))
+   .catch((error) => {
+     res.status(400).json({ error });
+   });
 
 }
+exports.userInfo = (req, res, next) => {
+  userModel.findOne({ _id: req.params.id })
+    .then((user) => res.status(200).json(user))
+    .catch((error) => res.status(404).json({ error }));
+};

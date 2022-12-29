@@ -4,8 +4,9 @@ const userController = require("../controller/userController");
 
 
 router.post("/add", userController.addUser);
-router.post("/update/:user", userController.apdateUserprofil);
-router.get("/getuser", userController.userData);
+router.put("/update/:id", userController.apdateUserprofil);
+router.post("/getuser", userController.userData);
+router.get("/getinfo/:id", userController.userInfo);
 
 
 

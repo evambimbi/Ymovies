@@ -56,3 +56,15 @@ border-radius: 30px
   cursor: pointer;
   color: #1B1622;
 }
+.subComment{
+  display: flex;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+.subComment img{
+  width: 30px;
+height: 30px;
+object-fit: cover;
+border-radius: 30px
+
+}

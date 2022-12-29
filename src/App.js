@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Connexion from "./components/connexion/Connexion";
 import { Context } from "./ContextAccount/Context";
@@ -17,6 +16,8 @@ import Haeder from "./components/acceuil/Header";
 import Acceuil from "./components/acceuil/Acceuil";
 import Profiluser from "./components/Profiluser";
 import socketIO from "socket.io-client";
+import "./App.css";
+
 const socket = socketIO.connect("http://localhost:5000");
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
 
   const ApiKey =
     "607682539682-tl7b5cm2cfftr62at32bvj04rr3sdpml.apps.googleusercontent.com";
-  const addUserUrl = "http://localhost:4000/user/add";
+  const addUserUrl = "http://localhost:5000/user/add";
 
   const addUser = (username, email, picture) => {
     axios
@@ -72,15 +73,13 @@ function App() {
   };
 
   const updateUser = (user) => {
-    console.log(user);
+    console.log(user.wt);
     console.log(token);
-    //appel au backend en passant user en params
     localStorage.setItem("token", user.xc.access_token);
     setUserToken(token);
     addUser(user.wt.Ad, user.wt.cu, user.wt.hK);
     navigate("/dashboard");
-    const profileImg = user.getBasicProfile().getImageUrl();
-    localStorage.setItem("image", profileImg);
+    localStorage.setItem("users", JSON.stringify(user.wt));
   };
   const noAcces = () => {
     if (!token) {
@@ -164,7 +163,7 @@ function App() {
             }
           />
           <Route
-            path="/profilUser"
+            path="/profilUser/:id"
             element={
               <Layout>
                 <Profiluser />

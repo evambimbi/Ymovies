@@ -3,8 +3,8 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faThumbsUp} from "@fortawesome/free-solid-svg-icons";
-import { faThumbsDown} from "@fortawesome/free-solid-svg-icons";
+import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
+import { faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import moment from "moment/moment";
 import "moment/locale/fr";
@@ -13,6 +13,7 @@ import "./Style.css";
 moment.locale("fr");
 
 const Commentfrom = ({ comment, socket }) => {
+  console.log("comment:",comment)
   const [subComment, setSubComment] = useState(false);
 
   const ReplyState = () => {
@@ -21,7 +22,7 @@ const Commentfrom = ({ comment, socket }) => {
   return (
     <div>
       <div className="commnt_user_profil">
-        <img src={comment?.userId?.picture} alt="imageUser" />
+        <img src={comment?.userId?.picture} alt="User" />
         <p className="name_user_comment">{comment?.userId?.name}</p>
         <div className="time-comment">
           {moment(parseInt(comment?.time)).fromNow()}
@@ -31,7 +32,9 @@ const Commentfrom = ({ comment, socket }) => {
         <p className="commentaire">{comment?.message}</p>
       </div>
       <div className="comment_reponse">
-        <div className="reponde" onClick={() => ReplyState()}>Rèpondre</div>
+        <div className="reponde" onClick={() => ReplyState()}>
+          Rèpondre
+        </div>
         <FontAwesomeIcon icon={faThumbsUp} />
         <FontAwesomeIcon icon={faThumbsDown} />
       </div>
@@ -45,15 +48,17 @@ const Commentfrom = ({ comment, socket }) => {
 const Reply = ({ trigger, comment, socket }) => {
   const [textSubcomment, setTextSubcomment] = useState();
   const commentId = comment._id;
-  console.log(textSubcomment);
+ 
 
   const postSubcomment = (event) => {
     event.preventDefault();
+    const times = new Date().getTime();
     if (textSubcomment.trim()) {
       socket.emit("sendSubcomment", {
         message: textSubcomment,
         socket: socket.id,
         userId: localStorage.getItem("user"),
+        time: times,
         commentId,
       });
       setTextSubcomment("");
@@ -81,8 +86,11 @@ const Reply = ({ trigger, comment, socket }) => {
         {comment.subComments.map((subComment) => (
           <React.Fragment key={subComment._id}>
             <div className="subComment">
-              <img src={subComment?.userId?.picture} alt="imageUser" />
+              <img src={subComment?.userId?.picture} alt="User" />
               <p className="name_user_comment">{subComment?.userId?.name}</p>
+              <div className="time-comment">
+                {moment(parseInt(subComment?.time)).fromNow()}
+              </div>
             </div>
             <div className="comment-content">
               <p className="commentaire">{subComment?.message}</p>

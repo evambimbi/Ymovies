@@ -14,4 +14,7 @@ const commentSchema = mongoose.Schema({
   subComments: [subComments],
 });
 
-module.exports = mongoose.model("Comments", commentSchema);
+const commentModel = mongoose.model("Comments", commentSchema);
+const subCommentModel = mongoose.model("SubComments", subComments);
+
+module.exports = { Comment: commentModel, SubComment: subCommentModel };

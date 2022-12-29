@@ -1,30 +1,27 @@
 import * as React from "react";
-import axios from "axios";
 import { useState } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { PhotoCamera } from "@mui/icons-material";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
-import "./Profil.css";
 import { IconButton } from "@mui/material";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import "./Profil.css";
 
 const Profiluser = () => {
   const [Nom, setNom] = useState("");
   const [Facebook, setFacebook] = useState("");
   const [Twitter, setTwitter] = useState("");
   const [Instagram, setInstagram] = useState("");
-  const [selectedFile, setSelectedFile] = useState();
-  const [isFilePicked, setIsFilePicked] = useState(false);
-  const [selected, setIsSelected] = useState();
-
-  const id = localStorage.getItem("user");
-  ;
+  const [picture, setPicture] = useState();
+  const { id } = useParams();
 
   const changeHandler = (event) => {
-    setSelectedFile(event.target.files[0]);
-    setIsSelected(true);
-    console.log(selectedFile);
+   if (event.target.files && event.target.files[0]) {
+     setPicture(URL.createObjectURL(event.target.files[0]))
+   }
   };
   const hadleNom = (e) => {
     const name = e.target.value;
@@ -42,56 +39,42 @@ const Profiluser = () => {
     const instragram = e.target.value;
     setInstagram(instragram);
   };
-
+  useEffect(() => {
+    fetch(`http://localhost:5000/user/getinfo/${id}`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => setPicture(data.picture));
+  }, []);
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const formData = new FormData();
-
-    formData.append("file", selectedFile);
-    formData.append("upload_preset", "eveline");
-
-    fetch("https://api.cloudinary.com/v1_1/dgfc623jt/upload", {
-      method: "POST",
-      body: formData,
+    const userData = {
+      name: Nom,
+      facebook: Facebook,
+      twitter: Twitter,
+      instagram: Instagram, 
+      picture: picture,
+    };
+    fetch(`http://localhost:5000/user/update/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify(userData),
     })
-      .then((res) => res.json())
-      .then((result) => {
-        console.log("Success:", result.secure_url);
-        if (result.secure_url) {
-          localStorage.setItem("image", result.secure_url);
-          const userData = {
-            name: Nom,
-            facebook: Facebook,
-            twitter: Twitter,
-            instagram: Instagram,
-            picture: isFilePicked,
-          };
-          axios
-            .post(`http://localhost:5000/user/update/${id}`, userData)
-            .then((res) => {
-              localStorage.setItem("user", res.data.user);
-              localStorage.setItem("name ",res.data.user.name);
-              console.log(res);
-            })
-            .catch((error) => {
-              console.log(error);
-            });
-        }
-        setIsFilePicked(result.secure_url);
+      .then((response) => {
+        console.log(response);
       })
       .catch((error) => {
         console.error("Error:", error);
       });
   };
-  const userImg = window.localStorage.getItem("image");
-
   return (
     <div className="Profiluser">
-      <form onSubmit={handleSubmit} className="formprofil" method="post">
+      <form onSubmit={handleSubmit} className="formprofil" method="put">
         <div className="profil_update">
           <div className="Profil_img">
-            <img src={userImg} alt="imageUser" />
+            <img src={picture} alt="imageUser" />
             <form className="form" method="post">
               <input
                 accept="image/*"
