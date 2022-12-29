@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { faVideo } from "@fortawesome/free-solid-svg-icons";
-import "./Header.css";
 import { NavLink} from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../../ContextAccount/Context";
+import "./Header.css";
 
 const Acceuil = () => {
   let { signOut } = useContext(Context);

@@ -1,11 +1,7 @@
 import * as React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
-import {
-  faBars,
-  faSearch,
-  faThumbsUp,
-} from "@fortawesome/free-solid-svg-icons";
+import {faBars,faSearch,faThumbsUp,} from "@fortawesome/free-solid-svg-icons";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { faVideo } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
@@ -19,9 +15,9 @@ import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import { Context } from "../../ContextAccount/Context";
 import { useContext } from "react";
-import "./Header.css";
 import Notifify from "../Notification";
 import { Typography } from "@mui/material";
+import "./Header.css";
 
 const Haeder = () => {
   const [text, setText] = useState("");
@@ -64,7 +60,6 @@ const Haeder = () => {
   const userData = {
     email: JSON.parse(localStorage.getItem("users")).cu,
   };
-  console.log(userData);
   useEffect(() => {
     fetch("http://localhost:5000/user/getuser", {
       method: "POST",

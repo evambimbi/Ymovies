@@ -3,9 +3,9 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import { useState, useEffect } from "react";
-import "./Style.css";
 import { useParams } from "react-router-dom";
 import Commentfrom from "./Commentfrom";
+import "./Style.css";
 
 const Comments = ({ socket }) => {
   const [comment, setComment] = useState([]);

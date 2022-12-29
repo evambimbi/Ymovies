@@ -7,7 +7,6 @@ import "./connexion/Connexion.css";
 
 const Abonnement = () => {
   const [Abonnement, setAbonnement] = useState([]);
-  // const { userToken } = useContext(Context);
   let token = window.localStorage.getItem("token");
   const [loading, setLoading] = useState(true);
 
