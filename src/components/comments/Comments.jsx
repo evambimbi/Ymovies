@@ -34,7 +34,7 @@ const Comments = ({ socket }) => {
   }, [socket, commentaire]);
   const onSubmit = (e) => {
     e.preventDefault();
-     const times =new Date().getTime();
+    const times = new Date().getTime();
     if (comment.trim()) {
       socket.emit("sendComment", {
         message: comment,
@@ -45,9 +45,8 @@ const Comments = ({ socket }) => {
       });
       setComment("");
     }
-  
   };
- 
+
   useEffect(() => {
     fetch(`http://localhost:5000/comment`)
       .then((res) => res.json())
@@ -74,6 +73,11 @@ const Comments = ({ socket }) => {
         </form>
         {commentaire
           ?.filter((comment) => comment.idVideo === videoId)
+          .sort(
+            (a, b) =>
+              new Date(parseInt(b.time)).getTime() -
+              new Date(parseInt(a.time)).getTime()
+          )
           .map((comment) => {
             return (
               <>

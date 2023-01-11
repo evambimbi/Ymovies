@@ -13,7 +13,7 @@ import "./Style.css";
 moment.locale("fr");
 
 const Commentfrom = ({ comment, socket }) => {
-  console.log("comment:",comment)
+  console.log("comment:", comment);
   const [subComment, setSubComment] = useState(false);
 
   const ReplyState = () => {
@@ -32,8 +32,9 @@ const Commentfrom = ({ comment, socket }) => {
         <p className="commentaire">{comment?.message}</p>
       </div>
       <div className="comment_reponse">
+        {/* <div>{comment.subComments.length} Réponses</div> */}
         <div className="reponde" onClick={() => ReplyState()}>
-          Rèpondre
+          {comment.subComments.length} Rèpondre
         </div>
         <FontAwesomeIcon icon={faThumbsUp} />
         <FontAwesomeIcon icon={faThumbsDown} />
@@ -48,7 +49,6 @@ const Commentfrom = ({ comment, socket }) => {
 const Reply = ({ trigger, comment, socket }) => {
   const [textSubcomment, setTextSubcomment] = useState();
   const commentId = comment._id;
- 
 
   const postSubcomment = (event) => {
     event.preventDefault();
@@ -83,20 +83,26 @@ const Reply = ({ trigger, comment, socket }) => {
         </button>
       </form>
       <div>
-        {comment.subComments.map((subComment) => (
-          <React.Fragment key={subComment._id}>
-            <div className="subComment">
-              <img src={subComment?.userId?.picture} alt="User" />
-              <p className="name_user_comment">{subComment?.userId?.name}</p>
-              <div className="time-comment">
-                {moment(parseInt(subComment?.time)).fromNow()}
+        {comment.subComments
+          .sort(
+            (a, b) =>
+              new Date(parseInt(b.time)).getTime() -
+              new Date(parseInt(a.time)).getTime()
+          )
+          .map((subComment) => (
+            <React.Fragment key={subComment._id}>
+              <div className="subComment">
+                <img src={subComment?.userId?.picture} alt="User" />
+                <p className="name_user_comment">{subComment?.userId?.name}</p>
+                <div className="time-comment">
+                  {moment(parseInt(subComment?.time)).fromNow()}
+                </div>
               </div>
-            </div>
-            <div className="comment-content">
-              <p className="commentaire">{subComment?.message}</p>
-            </div>
-          </React.Fragment>
-        ))}
+              <div className="comment-content">
+                <p className="commentaire">{subComment?.message}</p>
+              </div>
+            </React.Fragment>
+          ))}
       </div>
     </div>
   ) : (

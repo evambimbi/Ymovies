@@ -14,6 +14,7 @@ const commentSchema = mongoose.Schema({
   subComments: [subComments],
 });
 
+
 const commentModel = mongoose.model("Comments", commentSchema);
 const subCommentModel = mongoose.model("SubComments", subComments);
 

@@ -15,7 +15,7 @@ import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import { Context } from "../../ContextAccount/Context";
 import { useContext } from "react";
-import Notifify from "../Notification";
+import Notifification from "../Notification";
 import { Typography } from "@mui/material";
 import "./Header.css";
 
@@ -182,7 +182,7 @@ const Haeder = () => {
                 </MenuItem>
               </Menu>
             </div>
-            <Notifify />
+            <Notifification />
           </div>
         </div>
       </div>
